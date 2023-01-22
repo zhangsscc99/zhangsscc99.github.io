@@ -1,32 +1,35 @@
-def mergesort(seq):
-    """归并排序"""
-    if len(seq) <= 1:
-        return seq
-    mid = len(seq) / 2  # 将列表分成更小的两个列表
-    # 分别对左右两个列表进行处理，分别返回两个排序好的列表
-    left = mergesort(seq[:mid])
-    right = mergesort(seq[mid:])
-    # 对排序好的两个列表合并，产生一个新的排序好的列表
-    return merge(left, right)
+# merge_sort 代码实现
 
-def merge(left, right):
-    """合并两个已排序好的列表，产生一个新的已排序好的列表"""
-    result = []  # 新的已排序好的列表
-    i = 0  # 下标
-    j = 0
-    # 对两个列表中的元素 两两对比。
-    # 将最小的元素，放到result中，并对当前列表下标加1
-    while i < len(left) and j < len(right):
-        if left[i] <= right[j]:
-            result.append(left[i])
-            i += 1
+from typing import List
+
+def merge(arr1:List[int], arr2:List[int]): 
+    result = []
+    while arr1 and arr2:
+        if arr1[0] < arr2[0]:
+            result.append(arr1.pop(0))
         else:
-            result.append(right[j])
-            j += 1
-    result += left[i:]
-    result += right[j:]
+            result.append(arr2.pop(0))
+    if arr1:
+        result += arr1
+    if arr2:
+        result += arr2
     return result
-seq = [5,3,0,6,1,4]
-print(seq)
-result = mergesort(seq)
-print(result)
+
+def merge_sort(arr:List[int]):
+    """
+    归并排序
+    :param arr: 待排序的List
+    :return: 排好序的List
+    """
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr) // 2
+    return merge(merge_sort(arr[:mid]), merge_sort(arr[mid:]))
+
+if __name__ == '__main__':
+    import random
+    random.seed(54)
+    arr = [random.randint(0,100) for _ in range(10)]
+    print("原始数据：", arr)
+    arr_new = merge_sort(arr)
+    print("归并排序结果：", arr_new)

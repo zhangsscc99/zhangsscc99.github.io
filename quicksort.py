@@ -24,3 +24,4 @@ if __name__=="__main__":
     print("\n排序后的序列为：")
     for i in quick_sort(lists,0,len(lists)-1):
         print(i,end=" ")
+    print(quick_sort(lists,0,len(lists)-1))

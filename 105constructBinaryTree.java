@@ -22,7 +22,7 @@ class Solution {
         TreeNode root = new TreeNode(rootVal);
 
         root.left = build(preorder, preStart + 1, preStart + leftSize, inorder, inStart, index - 1);
-        root.right = build(preorder, preStart + leftSize + 1, preEnd, inorder, index + 1, inEnd);)
+        root.right = build(preorder, preStart + leftSize + 1, preEnd, inorder, index + 1, inEnd);
 
         return root;
         

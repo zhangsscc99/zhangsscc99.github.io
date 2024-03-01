@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<div id="markdown-content">Markdown内容加载中...</div>
+<script>
+    // 定义加载Markdown文件并展示内容的函数
+    function loadMarkdown(filePath) {
+      // 使用fetch API加载Markdown文件
+      fetch(filePath)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(markdown => {
+          // 使用marked.js解析Markdown内容为HTML
+          document.getElementById('markdown-content').innerHTML = marked(markdown);
+        })
+        .catch(error => {
+          console.error('加载Markdown文件失败:', error);
+          document.getElementById('markdown-content').innerHTML = 'Markdown内容加载失败。';
+        });
+    }
+    
+    // 调用函数加载并显示Markdown文件内容
+    // 请替换'my-markdown-file.md'为你的Markdown文件路径
+    loadMarkdown('my-markdown-file.md');
+    </script>
+    

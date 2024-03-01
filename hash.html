@@ -45,7 +45,7 @@
         <div class="toc">
             <h2>Table of Contents</h2>
             <div class="toc-item"><a href="#section1">2215 找出两数组的不同</a></div>
-            <div class="toc-item"><a href="#section2">876. 链表的中间结点</a></div>
+            <div class="toc-item"><a href="#section2">1 两数之和</a></div>
             <div class="toc-item"><a href="#section3">160. 相交链表</a></div>
             <div class="toc-item"><a href="#section4">206 反转链表</a></div>
             <div class="toc-item"><a href="#section5">2 两数相加</a></div>
@@ -94,23 +94,16 @@
         <p>
 
             <div class="section" id="section2"></div>
-        <h2>876. 链表的中间结点</h2>
+        <h2>1 两数之和</h2>
         <pre class="code-block">
-            class Solution {
-                public ListNode middleNode(ListNode head) {
-                    ListNode fast = head;
-                    ListNode slow = head;
-                    
-            
-                    while (fast != null && fast.next != null) {
-                        fast = fast.next.next;
-                        slow = slow.next;
-                    }
-            
-                    return slow;
-            
-                }
-            }
+            class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        keys = {}
+        for i in range(len(nums)):
+            if target - nums[i] in keys:
+                return [keys[target - nums[i]], i]
+            else:
+                keys[nums[i]] = i
         </pre>
         <p>这道题关键点在于 设置快慢指针。数一数，当fast没法继续前进的时候，slow正好是中间节点。。
         <p>

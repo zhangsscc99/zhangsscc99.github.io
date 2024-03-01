@@ -46,7 +46,7 @@
             <h2>Table of Contents</h2>
             <div class="toc-item"><a href="#section1">328 奇偶链表</a></div>
             <div class="toc-item"><a href="#section2">876. 链表的中间结点</a></div>
-            <div class="toc-item"><a href="#section3">Section 3</a></div>
+            <div class="toc-item"><a href="#section3">160. 相交链表</a></div>
         </div>
 
         <div class="section" id="section1"></div>
@@ -102,6 +102,36 @@
             }
         </pre>
         <p>这道题关键点在于 设置快慢指针。数一数，当fast没法继续前进的时候，slow正好是中间节点。。
+        <p>
+
+            <div class="section" id="section3"></div>
+        <h2>160. 相交链表</h2>
+        <pre class="code-block">
+            public class Solution {
+                public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+                    ListNode p1 = headA;
+                    ListNode p2 = headB;
+            
+                    while (p1 != p2) {
+                        if (p1 != null) {
+                            p1 = p1.next;
+                        } else {
+                            p1 = headB;
+                        }
+            
+                        if (p2 != null) {
+                            p2 = p2.next;
+                        } else {
+                            p2 = headA;
+                        }
+                    }
+            
+                    return p1;
+                    
+                }
+            }
+        </pre>
+        <p>这道题关键点在于 p1 p2 要能够等于null。因为有不存在相交节点的case。所以需要用等于null的情况来返回正确的返回值。不能写if (p1.next != null) 
         <p>
     </div>
 </body>

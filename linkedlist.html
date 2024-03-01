@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图论专题</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .main-title {
+            color: #007BFF;
+            font-size: 2em;
+            text-align: center;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            border-left: 3px solid #007BFF;
+            padding: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .link-to-other {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1em;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="link-to-other-page">
+            <a href="index.html">首页/返回</a>
+        </div>
+        <h1 class="main-title">链表专题</h1>
+        <p></p>
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <div class="toc-item"><a href="#section1">127 单词接龙</a></div>
+            <div class="toc-item"><a href="#section2">Section 2</a></div>
+            <div class="toc-item"><a href="#section3">Section 3</a></div>
+        </div>
+
+        <div class="section" id="section1"></div>
+        <h2>力扣328 奇偶链表</h2>
+        <pre class="code-block">
+            class Solution {
+                public ListNode oddEvenList(ListNode head) {
+                    if (head == null) {
+                        return head;
+                    }
+                    ListNode even = head.next;
+                    ListNode odd = head;
+                    ListNode evenHead = head.next;
+                    while (even != null && even.next != null) {
+                        odd.next = even.next;
+                        odd = odd.next;
+            
+                        even.next = odd.next;
+                        even = even.next;
+                    }
+                    odd.next = evenHead;
+                    return head;
+            
+            
+                }
+            }
+
+        </pre>
+        <p>这道题关键点在于 设置好odd和even的起始点。
+            odd.next = even.next;
+            odd = odd.next; 先把指针处理好，再处理节点递进。
+            while (even != null && even.next != null) 常用模板。
+            最后用前面一个接上后面一个就可以了。
+        <p>
+    </div>
+</body>
+</html>

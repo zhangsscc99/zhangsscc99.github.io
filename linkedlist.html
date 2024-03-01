@@ -44,8 +44,8 @@
         <p></p>
         <div class="toc">
             <h2>Table of Contents</h2>
-            <div class="toc-item"><a href="#section1">127 单词接龙</a></div>
-            <div class="toc-item"><a href="#section2">Section 2</a></div>
+            <div class="toc-item"><a href="#section1">328 奇偶链表</a></div>
+            <div class="toc-item"><a href="#section2">876. 链表的中间结点</a></div>
             <div class="toc-item"><a href="#section3">Section 3</a></div>
         </div>
 
@@ -80,6 +80,28 @@
             odd = odd.next; 先把指针处理好，再处理节点递进。
             while (even != null && even.next != null) 常用模板。
             最后用前面一个接上后面一个就可以了。
+        <p>
+
+            <div class="section" id="section2"></div>
+        <h2>876. 链表的中间结点</h2>
+        <pre class="code-block">
+            class Solution {
+                public ListNode middleNode(ListNode head) {
+                    ListNode fast = head;
+                    ListNode slow = head;
+                    
+            
+                    while (fast != null && fast.next != null) {
+                        fast = fast.next.next;
+                        slow = slow.next;
+                    }
+            
+                    return slow;
+            
+                }
+            }
+        </pre>
+        <p>这道题关键点在于 设置快慢指针。数一数，当fast没法继续前进的时候，slow正好是中间节点。。
         <p>
     </div>
 </body>

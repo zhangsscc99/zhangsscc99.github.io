@@ -50,8 +50,8 @@
             <div class="toc-item"><a href="#section4">206 反转链表</a></div>
             <div class="toc-item"><a href="#section5">2 两数相加</a></div>
             <div class="toc-item"><a href="#section6">92 反转链表II</a></div>
-            <div class="toc-item"><a href="#section7">206 反转链表</a></div>
-            <div class="toc-item"><a href="#section8">141 环形链表</a></div>
+            <div class="toc-item"><a href="#section7">141 环形链表</a></div>
+            <div class="toc-item"><a href="#section8">142 环形链表II</a></div>
             
         </div>
 
@@ -258,6 +258,42 @@
             </pre>
             <p>快慢指针的while循环条件一般都是这个。
             <p>
+
+    <div class="section" id="section8"></div>
+    <h2>142 环形链表II</h2>
+    <pre class="code-block">
+        public class Solution {
+            public ListNode detectCycle(ListNode head) {
+                ListNode fast = head;
+                ListNode slow = head;
+        
+                while (fast != null && fast.next != null) {
+                    fast = fast.next.next;
+                    slow = slow.next;
+                    if (slow == fast) {
+                        break;
+                    }
+                }
+        
+                if (fast == null || fast.next == null) {
+                    return null;
+                }
+        
+                fast = head;
+        
+                while (fast != slow) {
+                    fast = fast.next;
+                    slow = slow.next;
+                }
+        
+                return slow;
+                
+            }
+        }
+    </pre>
+    <p>先找到环里相交的点。然后此时把fast重新设置回head。注意 fast行走距离2k，slow行走距离k，假设交点距离环的起点距离m，那么head距离环的起点就是k - m。
+        此刻，如果fast从头开始到环的起点，slow也同步从交点开始行走，那么他们在环的起点可以相遇而且正好走了k-m距离。这个可以用作结论记住。
+    <p>
     </div>
 </body>
 </html>

@@ -51,7 +51,7 @@
             <div class="toc-item"><a href="#section5">2 两数相加</a></div>
             <div class="toc-item"><a href="#section6">92 反转链表II</a></div>
             <div class="toc-item"><a href="#section7">206 反转链表</a></div>
-            <div class="toc-item"><a href="#section8">206 反转链表</a></div>
+            <div class="toc-item"><a href="#section8">141 环形链表</a></div>
             
         </div>
 
@@ -235,6 +235,29 @@
         <p>这道题关键点在于需要熟练反转链表I。先把需要反转的区域调整到left == 1的位置。然后对剩下的右边的链表进行处理 注意处理successor。
 
         <p>
+
+            <div class="section" id="section7"></div>
+            <h2>141 环形链表</h2>
+            <pre class="code-block">
+                public class Solution {
+                    public boolean hasCycle(ListNode head) {
+                        ListNode fast = head;
+                        ListNode slow = head;
+                
+                        while (fast != null && fast.next != null) {
+                            fast = fast.next.next;
+                            slow = slow.next;
+                            if (fast == slow) {
+                                return true;
+                            }
+                
+                        }
+                        return false;
+                    }
+                }
+            </pre>
+            <p>快慢指针的while循环条件一般都是这个。
+            <p>
     </div>
 </body>
 </html>

@@ -40,7 +40,7 @@
         <h1 class="main-title">图论专题</h1>
         <p>图论是数学的一个分支，它以图为研究对象。图是由点以及连接这些点的边所构成的集合。</p>
         
-        <h2>示例代码</h2>
+        <h2>力扣127 单词接龙</h2>
         <pre class="code-block">
 
             import java.util.ArrayList;
@@ -129,6 +129,41 @@
             
         </pre>
         <a href="http://example.com/your-target-page" class="link-to-other">进一步学习图论</a>
+        <h2>这道题就是用的wordset 唯一性的性质。构建一个图是第一步。
+            queue就是用来进行bfs的。
+            visited是图里特有的 用来记录访问过了没有。如果说 changeletter后的string是endword 那就step++
+            toCharArray就是用来进行字符串单个char改变的。string到chararray类型转换的函数。
+            如果说k是原字母 那就不考虑。
+            charArray转换回去 那就是String.valueOf(char[]);
+            nextWord如果是属于wordset的 那就继续看是不是endword 是的话就返回true。不是的话 如果也unvisited 那就加到q里继续bfs。
+            为什么需要这个函数的几个参数？curWord用来做改动。endWord用来判定。queue用来继续bfs，visited用于记录节点访问。wordSet用来判断是否继续路径。
+            数据类型？curWord endWord很明显 都是String。queue就是string。set也是string。wordset也是string。为什么只有queue是队列？因为bfs固定的类型就是这样 先进先出。
+            visited和wordset都是唯一的 所以是hashset。
+            抄写char[] charArray = curWord.toCharArray;
+            char[] charArray = curWord.toCharArray;
+            char[] charArray = curWord.toCharArray;
+            char[] charArray = curWord.toCharArray;
+            String nextWord = String.valueOf(charArray);
+            String nextWord = String.valueOf(charArray);
+            String nextWord = String.valueOf(charArray);
+            String nextWord = String.valueOf(charArray);
+            wordSet.contains();
+            wordSet.contains()
+            wordSet.contains()
+            wordSet.contains()
+            visited.contains()
+            visited.contains()
+            q.add()
+            wordset.remove()
+            wordset.remove()
+            wordset.remove()
+            wordset.remove()
+            wordset.length()
+            wordset.length()
+            wordset.length()
+            wordset.length()
+            只有int arr是length。string也是length()
+        </h2>
     </div>
 </body>
 </html>

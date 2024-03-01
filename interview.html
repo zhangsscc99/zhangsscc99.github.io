@@ -1,28 +1,77 @@
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<div id="markdown-content">Markdown内容加载中...</div>
-<script>
-    // 定义加载Markdown文件并展示内容的函数
-    function loadMarkdown(filePath) {
-      // 使用fetch API加载Markdown文件
-      fetch(filePath)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.text();
-        })
-        .then(markdown => {
-          // 使用marked.js解析Markdown内容为HTML
-          document.getElementById('markdown-content').innerHTML = marked(markdown);
-        })
-        .catch(error => {
-          console.error('加载Markdown文件失败:', error);
-          document.getElementById('markdown-content').innerHTML = 'Markdown内容加载失败。';
-        });
-    }
-    
-    // 调用函数加载并显示Markdown文件内容
-    // 请替换'my-markdown-file.md'为你的Markdown文件路径
-    loadMarkdown('my-markdown-file.md');
-    </script>
-    
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图论专题</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .main-title {
+            color: #007BFF;
+            font-size: 2em;
+            text-align: center;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            border-left: 3px solid #007BFF;
+            padding: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .link-to-other {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1em;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="link-to-other-page">
+            <a href="index.html">首页/返回</a>
+        </div>
+        <h1 class="main-title">MapReduce</h1>
+        <p></p>
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <div class="toc-item"><a href="#section1">Section 1</a></div>
+            <div class="toc-item"><a href="#section2">Section 2</a></div>
+            <div class="toc-item"><a href="#section3">Section 3</a></div>
+        </div>
+
+        <div class="section" id="section1"></div>
+        <h2>力扣127 单词接龙</h2>
+        <pre class="code-block">
+
+        
+            
+        </pre>
+        <p># MapReduce
+            使用代码统计 20GB文件 
+            可能要统计13分钟 gb级别很久 。pb tb 那就更恐怖了。
+            gfs mapReduce bigTable（03-06年）
+            mapReduce 大任务 拆分到小任务 divide and conquer.
+            
+            让家长爸妈弟弟帮忙写作业。作业撕碎给三个人 map是作业撕碎。 reduce就是作业组装。
+            map shuffle分区排序。合并排序。reduce处理并且出来结果。
+            生成多个map任务
+            根据数据量大小 生成map任务 kv键值对。根据key计算所属分区 去到哪一个reduce。
+            
+            
+            面试经验多了会形成综合性的结论。有些新奇的 综合性大的认知会在脑子里形成。
+            比如结合tesla和here的面试，了解到需要“针对流”投简历。
+            
+        <p>
+    </div>
+</body>
+</html>

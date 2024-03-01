@@ -45,7 +45,7 @@
         <div class="toc">
             <h2>Table of Contents</h2>
             <div class="toc-item"><a href="#section1">111 二叉树的最小深度</a></div>
-            <div class="toc-item"><a href="#section2">876. 链表的中间结点</a></div>
+            <div class="toc-item"><a href="#section2">103 二叉树的锯齿形层序遍历</a></div>
             <div class="toc-item"><a href="#section3">160. 相交链表</a></div>
             <div class="toc-item"><a href="#section4">206 反转链表</a></div>
             <div class="toc-item"><a href="#section5">2 两数相加</a></div>
@@ -121,25 +121,50 @@ class Solution {
         <p>
 
             <div class="section" id="section2"></div>
-        <h2>876. 链表的中间结点</h2>
+        <h2>103 二叉树的锯齿形层序遍历</h2>
         <pre class="code-block">
             class Solution {
-                public ListNode middleNode(ListNode head) {
-                    ListNode fast = head;
-                    ListNode slow = head;
-                    
-            
-                    while (fast != null && fast.next != null) {
-                        fast = fast.next.next;
-                        slow = slow.next;
+                public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+                    if (root == null) {
+                        LinkedList<List<Integer>> empty = new LinkedList<>();
+                        return empty;
                     }
             
-                    return slow;
+                    LinkedList<List<Integer>> res = new LinkedList<>();
+                    Queue<TreeNode> q = new LinkedList<>();
+                    q.offer(root);
+            
+                    int depth = 1;
+            
+                    while (!q.isEmpty()) {
+                        int sz = q.size();
+                        LinkedList<Integer> level = new LinkedList<>();
+                        for (int i = 0; i < sz; i++) {
+                            TreeNode cur = q.poll();
+                            if (depth % 2 == 1) {
+                                level.addLast(cur.val);
+                            } else {
+                                level.addFirst(cur.val);
+                            }
+            
+                            if (cur.left != null) {
+                                q.offer(cur.left);
+                            }
+                            if (cur.right != null) {
+                                q.offer(cur.right);
+                            }
+                        }
+                        depth++;
+                        res.addLast(level);
+                    }
+            
+                    return res;
+            
             
                 }
             }
         </pre>
-        <p>这道题关键点在于 设置快慢指针。数一数，当fast没法继续前进的时候，slow正好是中间节点。。
+        <p>我巧妙地利用了depth记录奇数层偶数层，再利用java linkedlist的addFirst和addLast功能，完美实现了这道题的解法。
         <p>
 
             <div class="section" id="section3"></div>

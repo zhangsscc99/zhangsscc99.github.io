@@ -48,6 +48,10 @@
             <div class="toc-item"><a href="#section2">876. 链表的中间结点</a></div>
             <div class="toc-item"><a href="#section3">160. 相交链表</a></div>
             <div class="toc-item"><a href="#section4">206 反转链表</a></div>
+            <div class="toc-item"><a href="#section5">2 两数相加</a></div>
+            <div class="toc-item"><a href="#section6">206 反转链表</a></div>
+            <div class="toc-item"><a href="#section7">206 反转链表</a></div>
+            <div class="toc-item"><a href="#section8">206 反转链表</a></div>
             
         </div>
 
@@ -156,6 +160,43 @@
             </pre>
             <p>这道题关键点在于用递归。
             <p>
+
+    <div class="section" id="section5"></div>
+    <h2>2 两数相加</h2>
+    <pre class="code-block">
+        class Solution {
+            public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+                ListNode dummy = new ListNode(0);
+                ListNode cur = dummy;
+                int carry = 0;
+        
+                while (l1 != null || l2 != null || carry != 0) {
+                    if (l1 != null ) {
+                        carry += l1.val;
+                        l1 = l1.next;
+                    }
+        
+                    if (l2 != null) {
+                        carry += l2.val;
+                        l2 = l2.next;
+                    }
+        
+                    cur.next = new ListNode(carry % 10);
+                    cur = cur.next;
+                    carry = (int)(carry / 10);
+        
+                }
+        
+                return dummy.next;
+        
+        
+        
+            }
+        }
+    </pre>
+    <p>这道题关键点在于正好可以用逆序进行答案的返回，所以正好可以把进位往next接。cur是需要不断取余数的 而且cur需要把进位进行更新 while里的条件也至关重要 里面的carry l1 l2任意一个不为0或者null的时候 
+        都是可以往前进的。int要用整除。
+    <p>
     </div>
 </body>
 </html>

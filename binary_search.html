@@ -47,8 +47,8 @@
             <div class="toc-item"><a href="#section1">74 搜索二维矩阵</a></div>
             <div class="toc-item"><a href="#section2">240. 搜索二维矩阵II</a></div>
             <div class="toc-item"><a href="#section3">33 搜索旋转排序数组</a></div>
-            <div class="toc-item"><a href="#section4">206 反转链表</a></div>
-            <div class="toc-item"><a href="#section5">2 两数相加</a></div>
+            <div class="toc-item"><a href="#section4">162. 寻找峰值</a></div>
+            <div class="toc-item"><a href="#section5">278 第一个错误的版本</a></div>
             <div class="toc-item"><a href="#section6">92 反转链表II</a></div>
             <div class="toc-item"><a href="#section7">141 环形链表</a></div>
             <div class="toc-item"><a href="#section8">142 环形链表II</a></div>
@@ -179,78 +179,49 @@
             <p>
 
     <div class="section" id="section5"></div>
-    <h2>2 两数相加</h2>
+    <h2>162. 寻找峰值</h2>
     <pre class="code-block">
-        class Solution {
-            public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-                ListNode dummy = new ListNode(0);
-                ListNode cur = dummy;
-                int carry = 0;
-        
-                while (l1 != null || l2 != null || carry != 0) {
-                    if (l1 != null ) {
-                        carry += l1.val;
-                        l1 = l1.next;
-                    }
-        
-                    if (l2 != null) {
-                        carry += l2.val;
-                        l2 = l2.next;
-                    }
-        
-                    cur.next = new ListNode(carry % 10);
-                    cur = cur.next;
-                    carry = (int)(carry / 10);
-        
-                }
-        
-                return dummy.next;
+        class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        l = 0
+        r = len(nums) - 1
+
+        while l < r:
+            mid = (l + r) // 2
+            if (nums[mid] > nums[mid + 1]):
+                r = mid
+            else:
+                l = mid + 1
+        return l
+
         
         
-        
-            }
-        }
     </pre>
-    <p>这道题关键点在于正好可以用逆序进行答案的返回，所以正好可以把进位往next接。cur是需要不断取余数的 而且cur需要把进位进行更新 while里的条件也至关重要 里面的carry l1 l2任意一个不为0或者null的时候 
-        都是可以往前进的。int要用整除。
+    <p>这道题关键点在于虽然基于二分查找的算法，但是甚至做法更简单。需要灵活变通。l需要是mid + 1
     <p>
 
         <div class="section" id="section6"></div>
-        <h2>92 反转链表II</h2>
+        <h2>278 第一个错误的版本</h2>
         <pre class="code-block">
-            class Solution {
-                public ListNode reverseBetween(ListNode head, int left, int right) {
-                    if (left == 1) {
-                        return reverseN(head, right);
-                    }
-            
-                    head.next = reverseBetween(head.next, left - 1, right - 1);
-                    return head;
-            
-                }
-            
-                ListNode successor = new ListNode(0);
-            
-                public ListNode reverseN(ListNode head, int n) {
-                    if (n == 1) {
-                        successor = head.next;
-                        return head;
-            
-                    }
-            
-                    ListNode last = reverseN(head.next, n - 1);
-            
-                    head.next.next = head;
-                    head.next = successor;
-            
-                    return last;
-            
-            
-                }
-            }
-        </pre>
-        <p>这道题关键点在于需要熟练反转链表I。先把需要反转的区域调整到left == 1的位置。然后对剩下的右边的链表进行处理 注意处理successor。
+            # The isBadVersion API is already defined for you.
+# def isBadVersion(version: int) -> bool:
 
+class Solution:
+    def firstBadVersion(self, n: int) -> int:
+        l = 0
+        r = n
+
+        while l <= r:
+            mid = (l + r) // 2
+            if isBadVersion(mid):
+                r = mid - 1
+            else:
+                l = mid + 1
+        return l
+
+        
+        </pre>
+        <p>这题还是容易不够敏锐，虽然是二分，但是读懂题意很重要，需要非常敏锐的嗅觉防止做错。
         <p>
 
             <div class="section" id="section7"></div>

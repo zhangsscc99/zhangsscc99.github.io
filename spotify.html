@@ -45,8 +45,8 @@
         <div class="toc">
             <h2>Table of Contents</h2>
             <div class="toc-item"><a href="#section1">3.1 - 3.7</a></div>
-            <div class="toc-item"><a href="#section2">876. 链表的中间结点</a></div>
-            <div class="toc-item"><a href="#section3">160. 相交链表</a></div>
+            <div class="toc-item"><a href="#section2">1 RequestParam</a></div>
+            <div class="toc-item"><a href="#section3">2 SpringDataJPA</a></div>
             <div class="toc-item"><a href="#section4">206 反转链表</a></div>
             <div class="toc-item"><a href="#section5">2 两数相加</a></div>
             <div class="toc-item"><a href="#section6">92 反转链表II</a></div>
@@ -76,34 +76,25 @@
         <p>
 
             <div class="section" id="section3"></div>
-        <h2>160. 相交链表</h2>
+        <h2>2 spring data jpa</h2>
         <pre class="code-block">
-            public class Solution {
-                public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-                    ListNode p1 = headA;
-                    ListNode p2 = headB;
             
-                    while (p1 != p2) {
-                        if (p1 != null) {
-                            p1 = p1.next;
-                        } else {
-                            p1 = headB;
-                        }
-            
-                        if (p2 != null) {
-                            p2 = p2.next;
-                        } else {
-                            p2 = headA;
-                        }
-                    }
-            
-                    return p1;
-                    
-                }
-            }
         </pre>
-        <p>这道题关键点在于 p1 p2 要能够等于null。因为有不存在相交节点的case。所以需要用等于null的情况来返回正确的返回值。不能写if (p1.next != null) 
         <p>
+            在Spring Data JPA中，findByEmail方法并不需要在 UserRepository 接口中定义。Spring Data JPA 根据方法名的约定自动生成查询语句，只要方法名按照一定的规则命名，Spring Data JPA 就能够自动识别并生成对应的查询。
+            
+            在上述代码中，findByEmail方法的命名规则遵循了Spring Data JPA的约定：findBy表示根据某个字段查询，Email表示要查询的字段是email。因此，Spring Data JPA会根据这个方法名自动生成一个查询语句，用来查询User实体中email字段等于指定值的记录。
+            
+            这种命名约定的好处是可以大大简化查询方法的定义，不需要手动编写查询语句，Spring Data JPA会根据方法名自动生成对应的查询，提高了开发效率。
+            
+            User
+            为什么那么神奇 是ai做的吗
+            ChatGPT
+            不完全是。Spring Data JPA 的查询方法名约定确实是一种非常方便的功能，但它并不是由人工智能（AI）设计的。这个功能是由Spring Data团队设计和开发的，旨在简化开发人员对JPA的使用。
+            
+            Spring Data JPA 的目标之一是减少开发人员需要编写的样板代码，并提供一种更简洁、更易于使用的方式来访问数据库。查询方法名约定就是其中之一，它使得开发人员只需要按照一定的规则命名方法，就能够自动地生成对应的查询语句，而不需要手动编写繁琐的查询语句。
+            
+            虽然这个功能看起来可能有些神奇，但实际上它只是通过一系列的设计和实现，使得开发人员能够更轻松地使用Spring Data JPA来访问数据库。这种功能的设计背后是软件工程和数据库领域的最佳实践和设计原则，而不是人工智能。 <p>
 
             <div class="section" id="section4"></div>
             <h2>206 反转链表</h2>

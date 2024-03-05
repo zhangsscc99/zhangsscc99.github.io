@@ -63,26 +63,16 @@
         <p>今天开始 项目 计划一天2小时 大概为期两周做完
         <p>
 
-            <div class="section" id="section2"></div>
-        <h2>876. 链表的中间结点</h2>
+            <div class="section" id="section2">RequestParam的知识点</div>
+        <h2>1 RequestParam的知识点</h2>
         <pre class="code-block">
-            class Solution {
-                public ListNode middleNode(ListNode head) {
-                    ListNode fast = head;
-                    ListNode slow = head;
-                    
             
-                    while (fast != null && fast.next != null) {
-                        fast = fast.next.next;
-                        slow = slow.next;
-                    }
-            
-                    return slow;
-            
-                }
-            }
         </pre>
-        <p>这道题关键点在于 设置快慢指针。数一数，当fast没法继续前进的时候，slow正好是中间节点。。
+        <p>在某种程度上，是的。@RequestParam注解作为Spring框架中常用的注解之一，为处理HTTP请求中的参数提供了便捷的方式。它简化了从HTTP请求中获取参数值的过程，并提供了灵活的方式来处理这些参数。
+
+            使用@RequestParam注解，你可以将参数直接注入到控制器方法的参数中，而无需手动解析HTTP请求，这使得代码更加简洁和可读。同时，@RequestParam注解还提供了一些参数，例如required参数用于指定参数是否是必需的，默认为true，如果设置为false，则表示参数是可选的。
+            
+            虽然在某种程度上它可能看起来有些神奇，但实际上它只是Spring框架提供的一个方便的工具，用于处理HTTP请求中的参数，让我们能够更专注于业务逻辑的实现。
         <p>
 
             <div class="section" id="section3"></div>

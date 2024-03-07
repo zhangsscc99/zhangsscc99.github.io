@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>链表专题</title>
+    <title>排序专题</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,11 +40,11 @@
         <div class="link-to-other-page">
             <a href="index.html">首页/返回</a>
         </div>
-        <h1 class="main-title">链表专题</h1>
-        <p></p>
+        <h1 class="main-title">排序专题</h1>
+        <p>排序很有可能作为很多题目的小技巧 所以需要熟练</p>
         <div class="toc">
             <h2>Table of Contents</h2>
-            <div class="toc-item"><a href="#section1">328 奇偶链表</a></div>
+            <div class="toc-item"><a href="#section1">归并排序</a></div>
             <div class="toc-item"><a href="#section2">876. 链表的中间结点</a></div>
             <div class="toc-item"><a href="#section3">160. 相交链表</a></div>
             <div class="toc-item"><a href="#section4">206 反转链表</a></div>
@@ -56,36 +56,34 @@
         </div>
 
         <div class="section" id="section1"></div>
-        <h2>力扣328 奇偶链表</h2>
+        <h2>归并排序</h2>
         <pre class="code-block">
-            class Solution {
-                public ListNode oddEvenList(ListNode head) {
-                    if (head == null) {
-                        return head;
-                    }
-                    ListNode even = head.next;
-                    ListNode odd = head;
-                    ListNode evenHead = head.next;
-                    while (even != null && even.next != null) {
-                        odd.next = even.next;
-                        odd = odd.next;
-            
-                        even.next = odd.next;
-                        even = even.next;
-                    }
-                    odd.next = evenHead;
-                    return head;
-            
-            
-                }
-            }
+            def merge_sort(arr):
+    if len(arr) == 1:
+        return arr
+    mid = len(arr) // 2
+    
+    return merge(merge_sort(arr[:mid]), merge_sort(arr[mid:]))
 
+def merge(left, right):
+    res = []
+    while len(left) > 0 and len(right) > 0:
+        if left[0] <= right[0]:
+            res.append(left.pop(0))
+        else:
+            res.append(right.pop(0))
+    res += left
+    res += right
+    return res
+    
+
+arr1 = [12321, 12312 ,12, 1, 1,21,321,321,3,123,213,21]
+arr2 = [10, 1, 3,5,6,56,54,654]
+print(merge_sort(arr1))
+print(merge_sort(arr2))
         </pre>
-        <p>这道题关键点在于 设置好odd和even的起始点。
-            odd.next = even.next;
-            odd = odd.next; 先把指针处理好，再处理节点递进。
-            while (even != null && even.next != null) 常用模板。
-            最后用前面一个接上后面一个就可以了。
+        <p>归并排序需要熟练。其实就类似二分算法，要熟练写，这样才可以在题目里熟练运用。
+            算法复杂度是nlogn，因为二分，logn，每个归并里面的复杂度又是n。
         <p>
 
             <div class="section" id="section2"></div>

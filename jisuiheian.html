@@ -274,61 +274,56 @@ class Solution:
             <div class="section" id="section7"></div>
             <h2>141 环形链表</h2>
             <pre class="code-block">
-                public class Solution {
-                    public boolean hasCycle(ListNode head) {
-                        ListNode fast = head;
-                        ListNode slow = head;
-                
-                        while (fast != null && fast.next != null) {
-                            fast = fast.next.next;
-                            slow = slow.next;
-                            if (fast == slow) {
-                                return true;
-                            }
-                
-                        }
-                        return false;
-                    }
-                }
+                # Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        fast = slow = head
+        while fast != None and fast.next != None:
+            fast = fast.next.next
+            slow = slow.next
+            if fast == slow:
+                return True
+        return False
+        
             </pre>
-            <p>快慢指针的while循环条件一般都是这个。
+            <p>这题也用了快慢指针，和之前的找到链表中间节点的方法类似。
             <p>
 
     <div class="section" id="section8"></div>
     <h2>142 环形链表II</h2>
     <pre class="code-block">
-        public class Solution {
-            public ListNode detectCycle(ListNode head) {
-                ListNode fast = head;
-                ListNode slow = head;
+        # Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        fast = slow = head
+
+        while fast != None and fast.next != None:
+            fast = fast.next.next
+            slow = slow.next
+            if slow == fast:
+                break
+
+        if fast == None or fast.next == None:
+            return None
+            
+        fast = head
+        while fast != slow:
+            fast = fast.next
+            slow = slow.next
+        return slow
         
-                while (fast != null && fast.next != null) {
-                    fast = fast.next.next;
-                    slow = slow.next;
-                    if (slow == fast) {
-                        break;
-                    }
-                }
-        
-                if (fast == null || fast.next == null) {
-                    return null;
-                }
-        
-                fast = head;
-        
-                while (fast != slow) {
-                    fast = fast.next;
-                    slow = slow.next;
-                }
-        
-                return slow;
-                
-            }
-        }
     </pre>
-    <p>先找到环里相交的点。然后此时把fast重新设置回head。注意 fast行走距离2k，slow行走距离k，假设交点距离环的起点距离m，那么head距离环的起点就是k - m。
-        此刻，如果fast从头开始到环的起点，slow也同步从交点开始行走，那么他们在环的起点可以相遇而且正好走了k-m距离。这个可以用作结论记住。
-    <p>
+    <p>稍微注意一下中间对于fast为None的判断，这个时候就要返回结果。<p>
     </div>
 </body>
 </html>

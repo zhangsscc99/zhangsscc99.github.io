@@ -167,11 +167,101 @@
               
           </p>
 
-        <div class="section" id="section5">八股文</div>
+        <div class="section" id="section5">八股文，ood，system design</div>
         <p style="white-space: pre-line;">https://juejin.cn/post/7139706559092752414
             如果多做几个项目 对于写api，对于http get post delete put以及几个状态码就应该非常熟悉。
             对于database的sql也应该做到非常熟悉才对。
-            
+
+            https://www.youtube.com/watch?v=CsWFuFdlBVU
+            学习ood
+1 system design(design twitter)
+            Suppose you work as an engineer at a well-known company providing social services. Your task is to improve real-time event processing to get frequent results. Which tool below will help you the most in this scenario?
+
+           Apache Kafka is a framework for distributed real-time event processing and storage. 
+           2.Assume that an account of a public figure with millions of followers posts a Tweet on Twitter. Your system will need to handle millions of interactions with this Tweet by the account’s millions of followers. Which solution below is the best way to handle this traffic, assuming that the system knows the audience details of the Tweet?
+           increase or dedicate some servers to particular locations where a large portion of the audience belongs. 
+
+           design twitter: storage, bandwidth, computational resources
+           api design
+           3 怎么design一个twitter
+           第一 我们要去思考一些functional requirements/ non-functional requirements
+           post tweets: post one or more
+           delete, like, reply, search, follow, view User
+           non-functional: low latency. scalability of computational resources
+           4 什么是CDN
+           content delivery network
+           5 什么是load balancer
+           performance.
+           adding servers. scalability
+           availability
+           6 REST API复习
+           的，REST API通常非常适合Web应用程序（Web apps）开发，原因如下：
+
+简单性：REST利用了HTTP协议的现有特性，如HTTP方法（GET、POST、PUT、DELETE等）来对资源进行操作。这使得REST API相对简单易懂，并且易于实现。
+
+无状态性：REST是无状态的，这意味着每个请求都应包含执行请求所需的所有信息，而不依赖于之前的请求。这种特性使得REST服务更容易扩展，并且更适合Web环境，其中客户端与服务器之间的交互可能非常频繁且独立。
+
+可缓存性：RESTful服务的响应可以被明确地标记为可缓存或不可缓存，这有助于提高应用程序的性能和效率，通过减少对服务器的直接请求。
+
+统一接口：REST的统一接口约束使得与API的交互更加一致和标准化，这有助于开发者更快地理解和使用API，同时也便于API的维护和更新。
+
+灵活性：由于REST基于标准的HTTP协议，它可以使用任何可以发送HTTP请求的客户端进行交云。这使得创建多平台应用程序（如Web、移动和桌面应用程序）变得更加容易，因为它们都可以通过REST API与后端服务进行交互。
+
+可伸缩性：REST API的无状态性和可缓存性使其在处理大量并发请求时表现良好，这对于构建大规模Web应用程序是非常重要的。
+7 search tweet api
+searchTweet(user_id, search_term, max_result, exlude, media_field, expansions, sort_order, next_token, user_location)
+8 reply to tweet
+replyTweet(user_id, tweet_id, tweeted_user_id, reply_type, reply_content, reply_length)
+
+
+        </p>
+        <div class="section" id="section5">mock interview的bq</div>
+        <p style="white-space: pre-line;">
+            要说自己是fullstack程序员 突出springboot java。
+突出restapi的经验。
+
+介绍公司。组织体育比赛。event system。
+create the event system。没有context。
+简历可以写短一点
+做的东西有点空。
+code base里面看别人写的怎么样。
+
+要有一个比较困难的东西讲故事。
+在hiring manager那边只会得到相同的判断。
+一般都是面试senior engineer。不认得你 给出的判断是这样的。
+别的项目比较完整的功能套过来。
+看看code base 看看notification system有哪些东西，逻辑了解得更加透彻一点。
+增加整个功能的长度。
+包括你自己做这个template 你会怎么做。
+mvc framework和springboot有什么不一样。
+intentional的问题。
+答案并不好，spring mvc也是一个mvc的framework。
+大部分情况下 也要develop mvc的
+jpa的功能。
+java persistence api.
+还可以用hibernate。
+就会question你的整个简历的真实性。也许会save time。个人没有.NET的真实性。
+mvc没有答出来 就不行 花过十几个小时。
+简历还需要再去 写下来 看看。
+写下来之后花多长时间。
+算法 4个方面：1 communication 2 code quality 3 verification 4 clarification
+这四条来考察。
+碰到难点了 去沟通。problem-solving。最终的结果 验证的时候有没有发现问题
+做的比较好的是你的communication。还不错的。
+但是中间有个地方，有些面试官 你写错了 不会管的。
+brute force太容易想了。但凡一线公司不会让你用这个算法过。
+o n square。
+用一些sorting algorithm是可以接受的。 free giveaway。 如果同意的话。
+brute force is a give away.
+sorting algorithm.
+你的项目很水是会被发现的。
+第二个hashmap 看看哪个被看过了。
+算法不够灵活。sorting algorithm。
+128题
+nlogn可以。
+最后的communication要好好弄。
+
+提高的就是 
         </p>
   
               

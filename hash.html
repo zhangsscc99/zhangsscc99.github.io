@@ -109,34 +109,30 @@
         <p>
 
             <div class="section" id="section3"></div>
-        <h2>160. 相交链表</h2>
+        <h2>128 最长连续序列</h2>
         <pre class="code-block">
-            public class Solution {
-                public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-                    ListNode p1 = headA;
-                    ListNode p2 = headB;
+            class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        set_num = set(nums)
+        length = 0
+        res = 0
+
+        for i in range(len(nums)):
+            if nums[i] - 1 in set_num:
+                continue
+
+            cur = nums[i]
+            length = 1
+
+            while cur + 1 in set_num:
+                cur = cur + 1
+                length = length + 1
             
-                    while (p1 != p2) {
-                        if (p1 != null) {
-                            p1 = p1.next;
-                        } else {
-                            p1 = headB;
-                        }
-            
-                        if (p2 != null) {
-                            p2 = p2.next;
-                        } else {
-                            p2 = headA;
-                        }
-                    }
-            
-                    return p1;
-                    
-                }
-            }
+            res = max(length, res)
+        return res
+
         </pre>
-        <p>这道题关键点在于 p1 p2 要能够等于null。因为有不存在相交节点的case。所以需要用等于null的情况来返回正确的返回值。不能写if (p1.next != null) 
-        <p>
+        <p>这题如果用O(n) 说实话很难。实际做法是一个摊销分析后的O(n)。（amortized analysis）<p>
 
             <div class="section" id="section4"></div>
             <h2>206 反转链表</h2>

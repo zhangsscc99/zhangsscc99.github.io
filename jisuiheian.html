@@ -149,24 +149,51 @@ class Solution:
         <p>两数相加就是用dummy和cur，只要注意一些进位的细节就可以了。<p>
 
             <div class="section" id="section4"></div>
-            <h2>206 反转链表</h2>
+            <h2>148 排序链表</h2>
             <pre class="code-block">
-                class Solution {
-                    public ListNode reverseList(ListNode head) {
-                        if (head == null || head.next == null) {
-                            return head;
-                        }
-                
-                        ListNode last = reverseList(head.next);
-                        head.next.next = head;
-                        head.next = null;
-                
-                        return last;
-                
-                    }
-                }
+                # Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        def sort(head, tail):
+            if not head:
+                return head
+            if head.next == tail:
+                head.next = None
+                return head
+            slow = fast = head
+            while fast != tail:
+                fast = fast.next
+                slow = slow.next
+                if fast != tail:
+                    fast = fast.next
+            mid = slow
+            return merge(sort(head, mid), sort(mid, tail))
+
+        def merge(head1, head2):
+            
+            dummy = ListNode(0)
+            temp, temp1, temp2 = dummy, head1, head2
+            while temp1 and temp2:
+                if temp1.val <= temp2.val:
+                    temp.next = temp1
+                    temp1 = temp1.next
+                else:
+                    temp.next = temp2
+                    temp2 = temp2.next
+                temp = temp.next
+            
+            if temp1:
+                temp.next = temp1
+            if temp2:
+                temp.next = temp2
+            return dummy.next
+        return sort(head, None)
             </pre>
-            <p>这道题关键点在于用递归。
+            <p>用了归并，用了快慢指针，用了dummy和cur，和leetcode2小技巧类似。
             <p>
 
     <div class="section" id="section5"></div>

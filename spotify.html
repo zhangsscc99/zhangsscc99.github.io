@@ -168,31 +168,37 @@ Error Handling: Interceptors can handle errors that may occur during the login p
             
                                         版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
                                     
-            
+                                        TokenUtil类是一个用于生成和验证JWT的工具类。它封装了JWT的生成和验证过程，使得在应用中可以方便地使用JWT来实现认证和授权功能。
         </p>
 
             <div class="section" id="section7"></div>
-            <h2>141 环形链表</h2>
+            <h2>status code</h2>
             <pre class="code-block">
-                public class Solution {
-                    public boolean hasCycle(ListNode head) {
-                        ListNode fast = head;
-                        ListNode slow = head;
                 
-                        while (fast != null && fast.next != null) {
-                            fast = fast.next.next;
-                            slow = slow.next;
-                            if (fast == slow) {
-                                return true;
-                            }
-                
-                        }
-                        return false;
-                    }
-                }
             </pre>
-            <p>快慢指针的while循环条件一般都是这个。
-            <p>
+            <p>200 OK - The request has succeeded. The information returned with the response is dependent on the method used in the request.
+                201 Created - The request has been fulfilled, resulting in the creation of a new resource.
+                202 Accepted - The request has been accepted for processing, but the processing has not been completed.
+                204 No Content - The server successfully processed the request, and is not returning any content.
+                301 Moved Permanently - This and all future requests should be directed to the given URI.
+                302 Found - The resource is temporarily under a different URI. Since the redirection might be altered on occasion, the client should continue to use the Request-URI for future requests.
+                304 Not Modified - Indicates that the resource has not been modified since the version specified by the request headers If-Modified-Since or If-None-Match.
+                400 Bad Request - The server cannot or will not process the request due to an apparent client error.
+                401 Unauthorized - Similar to 403 Forbidden, but specifically for use when authentication is required and has failed or has not yet been provided.
+                403 Forbidden - The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.
+                404 Not Found - The requested resource could not be found but may be available in the future. Subsequent requests by the client are permissible.
+                405 Method Not Allowed - A request method is not supported for the requested resource; for example, a GET request on a form that requires data to be presented via POST.
+                408 Request Timeout - The server timed out waiting for the request.
+                410 Gone - Indicates that the resource requested is no longer available and will not be available again.
+                500 Internal Server Error - A generic error message, given when an unexpected condition was encountered and no more specific message is suitable.
+                501 Not Implemented - The server either does not recognize the request method, or it lacks the ability to fulfill the request.
+                503 Service Unavailable - The server is currently unavailable (because it is overloaded or down for maintenance). Generally, this is a temporary state.
+                504 Gateway Timeout - The server was acting as a gateway or proxy and did not receive a timely response from the upstream server.
+                505 HTTP Version Not Supported - The server does not support the HTTP protocol version used in the request.
+                507 Insufficient Storage - The server is unable to store the representation needed to complete the request.
+            
+            
+            </p>
 
     <div class="section" id="section8"></div>
     <h2>142 环形链表II</h2>

@@ -133,79 +133,43 @@ Error Handling: Interceptors can handle errors that may occur during the login p
             
 
     <div class="section" id="section5"></div>
-    <h2>2 两数相加</h2>
+    <h2>generic types</h2>
     <pre class="code-block">
-        class Solution {
-            public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-                ListNode dummy = new ListNode(0);
-                ListNode cur = dummy;
-                int carry = 0;
         
-                while (l1 != null || l2 != null || carry != 0) {
-                    if (l1 != null ) {
-                        carry += l1.val;
-                        l1 = l1.next;
-                    }
-        
-                    if (l2 != null) {
-                        carry += l2.val;
-                        l2 = l2.next;
-                    }
-        
-                    cur.next = new ListNode(carry % 10);
-                    cur = cur.next;
-                    carry = (int)(carry / 10);
-        
-                }
-        
-                return dummy.next;
-        
-        
-        
-            }
-        }
     </pre>
-    <p>这道题关键点在于正好可以用逆序进行答案的返回，所以正好可以把进位往next接。cur是需要不断取余数的 而且cur需要把进位进行更新 while里的条件也至关重要 里面的carry l1 l2任意一个不为0或者null的时候 
-        都是可以往前进的。int要用整除。
-    <p>
+    <p>Parameterized Type: A parameterized type is a class or interface that uses type parameters. For example, ArrayList<T> uses the type parameter T to represent the type of elements it can hold.
+
+        Type Parameter: Type parameters are placeholders for actual types. They are specified within angle brackets (<>) when declaring a generic type. Common type parameter names include T, E, K, and V.
+        
+        Generic Class: A generic class is a class that declares one or more type parameters. These parameters can be used throughout the class definition to represent different types. For instance, ArrayList<T> can store elements of any type.
+        
+        Generic Interface: Similar to generic classes, generic interfaces declare type parameters that can be used within the interface definition. Implementing classes must specify the actual types for these parameters.
+        
+        Generic Method: Generic methods are methods that declare their own type parameters. They can be used to operate on objects of any type. For example, a method public <T> T getFirst(List<T> list) can return the first element of any list.
+        
+        Wildcard: Wildcards are used to represent unknown types. They are denoted by the ? symbol and can be used as type arguments to increase flexibility.
+        
+        Type Erasure: Java's generics are implemented through type erasure, meaning that type information is removed during compilation. This allows for compatibility with older Java code but also means that generic type information is not available at runtime.
+        </p>
 
         <div class="section" id="section6"></div>
-        <h2>92 反转链表II</h2>
+        <h2>泛型</h2>
         <pre class="code-block">
-            class Solution {
-                public ListNode reverseBetween(ListNode head, int left, int right) {
-                    if (left == 1) {
-                        return reverseN(head, right);
-                    }
             
-                    head.next = reverseBetween(head.next, left - 1, right - 1);
-                    return head;
-            
-                }
-            
-                ListNode successor = new ListNode(0);
-            
-                public ListNode reverseN(ListNode head, int n) {
-                    if (n == 1) {
-                        successor = head.next;
-                        return head;
-            
-                    }
-            
-                    ListNode last = reverseN(head.next, n - 1);
-            
-                    head.next.next = head;
-                    head.next = successor;
-            
-                    return last;
-            
-            
-                }
-            }
         </pre>
-        <p>这道题关键点在于需要熟练反转链表I。先把需要反转的区域调整到left == 1的位置。然后对剩下的右边的链表进行处理 注意处理successor。
+        <p>泛型在java中有很重要的地位，在面向对象编程及各种设计模式中有非常广泛的应用。
 
-        <p>
+            什么是泛型？为什么要使用泛型？
+            
+            泛型，即“参数化类型”。一提到参数，最熟悉的就是定义方法时有形参，然后调用此方法时传递实参。那么参数化类型怎么理解呢？顾名思义，就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），然后在使用/调用时传入具体的类型（类型实参）。
+            
+            泛型的本质是为了参数化类型（在不创建新的类型的情况下，通过泛型指定的不同类型来控制形参具体限制的类型）。也就是说在泛型使用过程中，操作的数据类型被指定为一个参数，这种参数类型可以用在类、接口和方法中，分别被称为泛型类、泛型接口、泛型方法。
+            ————————————————
+            
+                                        版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+                                    
+            
+        </p>
 
             <div class="section" id="section7"></div>
             <h2>141 环形链表</h2>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>排序专题</title>
+    <title>双指针专题</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,12 +40,12 @@
         <div class="link-to-other-page">
             <a href="index.html">首页/返回</a>
         </div>
-        <h1 class="main-title">排序专题</h1>
-        <p>排序很有可能作为很多题目的小技巧 所以需要熟练</p>
+        <h1 class="main-title">双指针专题</h1>
+        <p></p>
         <div class="toc">
             <h2>Table of Contents</h2>
-            <div class="toc-item"><a href="#section1">归并排序</a></div>
-            <div class="toc-item"><a href="#section2">148 排序链表</a></div>
+            <div class="toc-item"><a href="#section1">27 移除元素</a></div>
+            <div class="toc-item"><a href="#section2">876. 链表的中间结点</a></div>
             <div class="toc-item"><a href="#section3">160. 相交链表</a></div>
             <div class="toc-item"><a href="#section4">206 反转链表</a></div>
             <div class="toc-item"><a href="#section5">2 两数相加</a></div>
@@ -56,102 +56,74 @@
         </div>
 
         <div class="section" id="section1"></div>
-        <h2>归并排序</h2>
+        <h2>力扣27 移除元素</h2>
         <pre class="code-block">
-            def merge_sort(arr):
-    if len(arr) == 1:
-        return arr
-    mid = len(arr) // 2
-    
-    return merge(merge_sort(arr[:mid]), merge_sort(arr[mid:]))
+            class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        fast = slow = 0
+        while fast < len(nums):
 
-def merge(left, right):
-    res = []
-    while len(left) > 0 and len(right) > 0:
-        if left[0] <= right[0]:
-            res.append(left.pop(0))
-        else:
-            res.append(right.pop(0))
-    res += left
-    res += right
-    return res
-    
+            if nums[fast] != val:
+                nums[slow] = nums[fast]
+                slow += 1
+            fast += 1
+        return slow
 
-arr1 = [12321, 12312 ,12, 1, 1,21,321,321,3,123,213,21]
-arr2 = [10, 1, 3,5,6,56,54,654]
-print(merge_sort(arr1))
-print(merge_sort(arr2))
         </pre>
-        <p>归并排序需要熟练。其实就类似二分算法，要熟练写，这样才可以在题目里熟练运用。
-            算法复杂度是nlogn，因为二分，logn，每个归并里面的复杂度又是n。
+        <p>双指针做法。利用fast和slow，进行inplace更改数组的操作。不需要任何额外空间。
         <p>
 
             <div class="section" id="section2"></div>
-        <h2>148 排序链表</h2>
+        <h2>876. 链表的中间结点</h2>
         <pre class="code-block">
-            # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-class Solution:
-    def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        def merge_sort(head, tail):
-            if not head:
-                return head
-            if head.next == tail:
-                head.next = None
-                return head
-            slow = fast = head
-            while fast != tail:
-                slow = slow.next
-                fast = fast.next
-                if fast != tail:
-                    fast = fast.next
-            mid = slow
-            return merge(merge_sort(head, mid), merge_sort(mid, tail))
-
-        def merge(head1, head2):
-            dummy = ListNode(0)
-            temp, temp1, temp2 = dummy, head1, head2
-            while temp1 and temp2:
-                if temp1.val <= temp2.val:
-                    temp.next = temp1
-                    temp1 = temp1.next
-                else:
-                    temp.next = temp2
-                    temp2 = temp2.next
-                temp = temp.next
-            if temp1:
-                temp.next = temp1
-            elif temp2:
-                temp.next = temp2
-            return dummy.next
-
-        return merge_sort(head, None)
+            class Solution {
+                public ListNode middleNode(ListNode head) {
+                    ListNode fast = head;
+                    ListNode slow = head;
+                    
+            
+                    while (fast != null && fast.next != null) {
+                        fast = fast.next.next;
+                        slow = slow.next;
+                    }
+            
+                    return slow;
+            
+                }
+            }
         </pre>
-        <p>一个是对于归并算法的熟练，就是不停去二分一个arr，然后进行归并。归并的一步好想，二分也好想，但是放在链表里并不简单。
-
+        <p>这道题关键点在于 设置快慢指针。数一数，当fast没法继续前进的时候，slow正好是中间节点。。
         <p>
 
             <div class="section" id="section3"></div>
-        <h2>56 合并区间</h2>
+        <h2>160. 相交链表</h2>
         <pre class="code-block">
-            class Solution:
-    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        res = []
-        intervals.sort(key = lambda a: a[0])
-        res.append(intervals[0])
-
-        for cur in intervals[1:]:
-            last = res[-1]
-            if cur[0] <= last[1]:
-                last[1] = max(last[1], cur[1])
-            else:
-                res.append(cur)
-        return res
+            public class Solution {
+                public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+                    ListNode p1 = headA;
+                    ListNode p2 = headB;
+            
+                    while (p1 != p2) {
+                        if (p1 != null) {
+                            p1 = p1.next;
+                        } else {
+                            p1 = headB;
+                        }
+            
+                        if (p2 != null) {
+                            p2 = p2.next;
+                        } else {
+                            p2 = headA;
+                        }
+                    }
+            
+                    return p1;
+                    
+                }
+            }
         </pre>
-        <p> </p>
+        <p>这道题关键点在于 p1 p2 要能够等于null。因为有不存在相交节点的case。所以需要用等于null的情况来返回正确的返回值。不能写if (p1.next != null) 
+        <p>
 
             <div class="section" id="section4"></div>
             <h2>206 反转链表</h2>

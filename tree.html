@@ -168,34 +168,35 @@ class Solution {
         <p>
 
             <div class="section" id="section3"></div>
-        <h2>160. 相交链表</h2>
+        <h2>101 对称的树</h2>
         <pre class="code-block">
-            public class Solution {
-                public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-                    ListNode p1 = headA;
-                    ListNode p2 = headB;
-            
-                    while (p1 != p2) {
-                        if (p1 != null) {
-                            p1 = p1.next;
-                        } else {
-                            p1 = headB;
-                        }
-            
-                        if (p2 != null) {
-                            p2 = p2.next;
-                        } else {
-                            p2 = headA;
-                        }
-                    }
-            
-                    return p1;
-                    
-                }
-            }
+            # Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        if root == None:
+            return False
+
+        return self.dfs(root.left, root.right)
+    def dfs(self, left, right):
+        if (left == None and right == None):
+            return True
+        if (left == None or right == None):
+            return False
+        if (left.val != right.val):
+            return False
+        return self.dfs(left.left, right.right) and self.dfs(left.right, right.left)
+
+                
+
+
+
         </pre>
-        <p>这道题关键点在于 p1 p2 要能够等于null。因为有不存在相交节点的case。所以需要用等于null的情况来返回正确的返回值。不能写if (p1.next != null) 
-        <p>
+        <p>主要是递归。用bfs做出来。都是null的时候就返回true，一个null就是false，都不null但是不相等也是false。想着什么样会是false会更容易一些。<p>
 
             <div class="section" id="section4"></div>
             <h2>206 反转链表</h2>

@@ -74,6 +74,13 @@ Network transfer: Network transfer usually involves the exchange of data in text
 Data storage: JSON format is also often used to store data (such as in databases) because it is very readable and concise.
 
 Security: The serialization and deserialization process can serve as a simple form of data validation. When deserializing, you can check whether the JSON data conforms to the expected format, thereby avoiding problems caused by incorrect or malicious data structures.
+6. why repo?
+high-level abstraction. for data access and manipulation. rather writing custom data access code(such as sql queries)
+provide a generic api for accessing and manipulating entities. 
+
+
+Purpose of UserRepository Interface
+The UserRepository interface, as an example, is designed to manage the data access operations for User entities. By extending JpaRepository, it inherits a set of methods for performing CRUD (Create, Read, Update, Delete) operations, as well as pagination and sorting functionality. Developers can also define custom query methods in this interface, and Spring Data JPA will automatically provide the implementation based on the method name or the custom query annotation (@Query). This greatly reduces the amount of boilerplate code required to interact with the database.
 
 </p>
         </div>

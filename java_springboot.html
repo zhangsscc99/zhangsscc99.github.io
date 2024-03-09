@@ -48,7 +48,34 @@
                 2. 
                 @AuthenticationPrincipal User user：
 这个注解自动地将当前经过认证的用户注入方法中。在Spring Security环境下，它通常用来获取代表当前用户的User对象。User是Spring Security提供的一个用户详情类，它包含了当前用户的信息，比如用户名、密码和授权
-            </p>
+            3. JPA Repository
+            JPA Repository refers to a set of interfaces in Spring Data JPA that abstracts away the boilerplate code required to perform CRUD (Create, Read, Update, Delete) operations on entities. When you extend interfaces like JpaRepository, Spring Data JPA automatically provides implementations for methods like save(), findAll(), findById(), deleteById(), etc.
+            
+            For example, JpaRepository is a JPA-specific extension of the Repository interface that comes with additional JPA-related methods. It provides a way to perform various operations on the entity, including finding, saving, and deleting records without needing to write any implementation code.
+            
+            These annotations and interfaces significantly reduce the amount of boilerplate code developers 
+            @Entity
+The @Entity annotation marks a class as a JPA entity. An entity represents a table stored in a database. Every instance of an entity corresponds to a row in the table. This annotation tells the JPA provider that the class should be mapped to a database table.
+
+@Id
+The @Id annotation marks a field as the primary key of the entity. The primary key uniquely identifies each entry in the database table. This annotation is placed on the field that maps to the primary key column of the table.
+
+@GeneratedValue
+The @GeneratedValue annotation is used in conjunction with @Id to specify the primary key generation strategy for the entity. It indicates that the persistence provider should automatically generate the primary key for the entities. The strategy attribute of @GeneratedValue allows you to select the primary key generation strategy, such as AUTO, SEQUENCE, IDENTITY, or TABLE. AUTO is the default strategy and lets the persistence provider choose the strategy based on the database capabilities.
+4.@RestController is a special type of @Controller that contains the semantics of @ResponseBody, which means that the returned object will be automatically serialized into JSON and written into the HTTP response body
+5.Why do we need to constantly serialize and deserialize JSON? This process is critical to the functionality of the REST API for several reasons:
+
+Data exchange format: JSON is a lightweight data exchange format that can easily transfer data between different systems. Due to its simplicity and ease of human readability, it has become the de facto standard for data exchange in Web APIs.
+
+Language-independence: JSON is a language-independent data format that does not rely on the specific structure of any programming language. This means that no matter what language the server and client are written in, they can communicate via JSON.
+
+Network transfer: Network transfer usually involves the exchange of data in text format. Serialization converts an object or data structure into a JSON string so that it can be sent over network protocols such as HTTP. In contrast, deserialization converts the received JSON string back into the original object or data structure for use within the program.
+
+Data storage: JSON format is also often used to store data (such as in databases) because it is very readable and concise.
+
+Security: The serialization and deserialization process can serve as a simple form of data validation. When deserializing, you can check whether the JSON data conforms to the expected format, thereby avoiding problems caused by incorrect or malicious data structures.
+
+</p>
         </div>
     </div>
 </body>

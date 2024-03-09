@@ -99,6 +99,16 @@ enableautoconfiguration这个注解就是用来启动自动配置类的，扫面
 conditionalOnProperty
 springboot单独提供出来的
 conditionalonclass onbean这些都是核心注解
+
+The image you've uploaded appears to be a screenshot of some text explaining various annotations related to Spring Boot's conditional registration of beans. Specifically, the text seems to be describing @Conditional annotations which are a series of annotations that allow you to conditionally register beans in the Spring context based on certain criteria. Let's go over them in English:
+
+@ConditionalOnBean: This annotation is used to conditionally include a bean into the Spring ApplicationContext only if a bean with the specified name is already present in the ApplicationContext.
+
+@ConditionalOnClass: This one is used to register a bean only if the specified classes are present in the classpath. It ensures that the bean will not be created if the required class is not found, preventing class-related errors.
+
+@ConditionalOnExpression: This allows for the inclusion of a bean based on the result of a SpEL (Spring Expression Language) expression. It gives you a powerful way to control bean registration dynamically, based on the evaluation of the expression.
+
+These annotations are part of Spring Boot's auto-configuration magic, which tries to automatically configure your Spring application based on the jar dependencies that you have added. They can be particularly useful for creating auto-configuration classes that conditionally define beans to auto-configure a Spring application according to the presence or absence of certain criteria.
 9springboot bean
 Yes, you can understand a bean as an object that contains all the information an object would have, and it can indeed be used for passing data, among other functionalities. To make this clearer, let's use a metaphor involving a coffee shop to explain the concept of beans, objects, and their roles within the Spring Framework.
 

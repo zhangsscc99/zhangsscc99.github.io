@@ -44,6 +44,10 @@
                 相当于protected就是传递给子类的
                 default的话，一般子类也不可以。只能本包和类的内部。
                 而private最严格，本包都不行 只能类的内部可以。
+                
+                2. 
+                @AuthenticationPrincipal User user：
+这个注解自动地将当前经过认证的用户注入方法中。在Spring Security环境下，它通常用来获取代表当前用户的User对象。User是Spring Security提供的一个用户详情类，它包含了当前用户的信息，比如用户名、密码和授权
             </p>
         </div>
     </div>

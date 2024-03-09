@@ -81,6 +81,40 @@ provide a generic api for accessing and manipulating entities.
 
 Purpose of UserRepository Interface
 The UserRepository interface, as an example, is designed to manage the data access operations for User entities. By extending JpaRepository, it inherits a set of methods for performing CRUD (Create, Read, Update, Delete) operations, as well as pagination and sorting functionality. Developers can also define custom query methods in this interface, and Spring Data JPA will automatically provide the implementation based on the method name or the custom query annotation (@Query). This greatly reduces the amount of boilerplate code required to interact with the database.
+7 spring, SpringBoot
+springboot是spring生态的产品
+spring framework是一个容器框架
+springboot不是一个框架 快速构建基于spring的脚手架
+为开发spring生态其他框架铺平道路
+2个不是一个层面的东西 没有可比性
+8  springboot的核心注解
+java config的配置版本（xml的配置直接跳到springboot的配置方式）
+springbootapplication 启动类这里
+当前应用是springboot应用
+springboot configuration也是一个原注解
+启动类是一个配置类
+enableautoconfiguration这个注解就是用来启动自动配置类的，扫面所有能使用的自动配置类
+自动配置类概念：springboot里的
+很多自动配置类里面：autoconfiguration。
+conditionalOnProperty
+springboot单独提供出来的
+conditionalonclass onbean这些都是核心注解
+9springboot bean
+Yes, you can understand a bean as an object that contains all the information an object would have, and it can indeed be used for passing data, among other functionalities. To make this clearer, let's use a metaphor involving a coffee shop to explain the concept of beans, objects, and their roles within the Spring Framework.
+
+The Coffee Shop Metaphor
+Imagine you walk into a coffee shop (the Spring Framework) to get a cup of coffee (an object). This coffee shop is unique because it has a special service (the Spring IoC container) that prepares your coffee for you exactly how you like it without you having to do it yourself.
+
+Coffee Beans (Spring Beans): Just as coffee beans are the essential ingredient to make a cup of coffee, Spring beans are the essential components used by the Spring Framework to create objects. These beans are not simple Java objects; they are special because the Spring container manages them. This means that the container creates these objects, configures them with the right settings (like how you might like your coffee with a specific amount of sugar and milk), and manages their entire lifecycle.
+
+The Recipe (Bean Configuration): Before the coffee shop can make your coffee, they need to know how you like it. This is similar to defining a bean in Spring. You can tell Spring how to create your object (bean), what ingredients (dependencies) it needs, and other settings through configurations. This can be done in various ways, such as XML files, annotations, or Java config classes, much like how you can order your coffee verbally, write it down on a piece of paper, or select options on a touchscreen.
+
+Making the Coffee (Object Instantiation): When you order your coffee, the coffee shop's service (Spring IoC container) goes to work. It takes the coffee beans (Spring beans), follows the recipe (bean configuration), and makes your coffee (object). This process is managed entirely by the coffee shop, so you don't have to grind the beans, boil the water, or mix the ingredients yourself. Similarly, Spring takes care of creating objects and managing them according to the defined configurations, so developers don't have to write boilerplate code for object creation, lifecycle management, and dependency resolution.
+
+Serving the Coffee (Dependency Injection): If your coffee requires milk, the coffee shop adds milk to it before serving. This is like Spring's dependency injection. If a bean needs another bean to work (like a coffee needs milk), Spring ensures that the required bean is created and "injected" into the bean that needs it.
+
+Enjoying Your Coffee (Using the Bean/Object): Finally, you get your coffee exactly how you like it, ready to drink. In your application, the Spring-managed beans are ready to be used wherever needed, configured and assembled according to your specifications.
+In this metaphor, the coffee shop takes the responsibility off your hands and ensures your coffee is made correctly, just as Spring manages your objects (beans) and their dependencies, freeing you to focus on the more important parts of your application's logic.
 
 </p>
         </div>

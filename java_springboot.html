@@ -128,6 +128,31 @@ Serving the Coffee (Dependency Injection): If your coffee requires milk, the cof
 Enjoying Your Coffee (Using the Bean/Object): Finally, you get your coffee exactly how you like it, ready to drink. In your application, the Spring-managed beans are ready to be used wherever needed, configured and assembled according to your specifications.
 In this metaphor, the coffee shop takes the responsibility off your hands and ensures your coffee is made correctly, just as Spring manages your objects (beans) and their dependencies, freeing you to focus on the more important parts of your application's logic.
 
+
+10 springboot的自动配置原理
+springbootconfiguration引入了enableautoconfiguration
+enableautoconfiguration引入了import
+spring容器启动时，加载loc容器会解析import注解
+import导入了deferredImportSelector, 会使springboot的自动配置类的顺序在最后，这样方便我们扩展和覆盖
+读取所有的meta-inf/spring.factories文件
+过滤出所有autoconfigurationclass类型的类
+最后通过condition排除无效的自动配置类
+11springboot的启动原理
+从spring.factories读取listener applicatinContextInitializer
+启动类当作配置类传入进行初始化
+applicationlistener监听器
+推算当前web应用类型webapplicationtype
+读取applicationconntextinitializer
+new SpringApplication初始化信息
+执行.run 加载了ioc容器
+refresh方法 体现整个ioc加载过程
+servletwebserverapplicationcontext
+自动配置类概念：springboot里的记录启动时间
+记录启动结束时间
+输出启动耗时时间
+调用很多监听器对外扩展
+读取springapplicationrun监听器
+
 </p>
         </div>
     </div>

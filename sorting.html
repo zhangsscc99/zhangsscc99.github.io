@@ -46,7 +46,7 @@
             <h2>Table of Contents</h2>
             <div class="toc-item"><a href="#section1">归并排序</a></div>
             <div class="toc-item"><a href="#section2">148 排序链表</a></div>
-            <div class="toc-item"><a href="#section3">160. 相交链表</a></div>
+            <div class="toc-item"><a href="#section3">56 合并区间</a></div>
             <div class="toc-item"><a href="#section4">206 反转链表</a></div>
             <div class="toc-item"><a href="#section5">2 两数相加</a></div>
             <div class="toc-item"><a href="#section6">92 反转链表II</a></div>
@@ -150,8 +150,22 @@ class Solution:
             else:
                 res.append(cur)
         return res
+
+        class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort(key=lambda x: x[0])
+        res = []
+        for cur in intervals:
+            if len(res) == 0:
+                res.append(cur)
+            elif res[-1][1] < cur[0]:
+                res.append(cur)
+            else:
+                res[-1][1] = max(res[-1][1], cur[1])
+        return res
+
         </pre>
-        <p> </p>
+        <p>写了两个写法 可能第二个更自然一点 </p>
 
             <div class="section" id="section4"></div>
             <h2>206 反转链表</h2>

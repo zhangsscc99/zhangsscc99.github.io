@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
+            text-align: left;
             margin-top: 50px;
         }
         .main-title {
@@ -152,6 +152,19 @@ servletwebserverapplicationcontext
 输出启动耗时时间
 调用很多监听器对外扩展
 读取springapplicationrun监听器
+12json stands for javascript object notation. lightweight format for storing and transporting data. 
+jason is the most popular format for frontend and backend communications. 
+13 how do we return responses in JSON format?
+Springboot automcatically converts it to json format for you. 
+
+14public record是什么
+在Java中，public record是Java 14中引入的一种新特性，用于简洁地定义数据传输对象（DTO），它能够自动生成字段、构造函数、equals()、hashCode()和toString()方法。public record关键字用于声明一个record类，类似于传统的Java类，但其主要用途是为数据传输而设计的，即不可变的数据聚合。
+
+在你提供的示例中，Person是一个record类，它有四个字段：name、company、homeAddress和favoriteBook。这些字段在声明时没有用private、protected或package-private修饰符修饰，因此它们默认是public的。
+
+记录类不需要编写显式的构造函数，因为它们会自动生成一个公共的构造函数来初始化所有字段。此外，记录类还会自动生成equals()、hashCode()和toString()方法，这些方法会基于记录类的所有字段生成对应的实现。
+
+你的示例中漏掉了record类的主体部分，它应该包含在花括号 {} 中间。在这个部分，你可以添加额外的方法或者其他成员。
 
 </p>
         </div>

@@ -89,14 +89,30 @@
         <p>
 
             <div class="section" id="section3"></div>
-        <h2>595</h2>
+        <h2>67</h2>
         <pre class="code-block">
-            # Write your MySQL query statement below
-select name, area, population
-from World
-where area >= 3000000 or population >= 25000000
+            class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        a = a[::-1]
+        b = b[::-1]
+        sb = []
+
+        m = len(a)
+        n = len(b)
+        carry = 00
+        i = 0
+
+        while i < max(m, n) or carry > 0:
+            val = carry
+            val += int(a[i]) if i < m else 0
+            val += int(b[i]) if i < n else 0
+            sb.append(str(val % 2))
+            carry = val // 2
+            i += 1
+
+        return "".join(sb[::-1])
         </pre>
-        <p>省略<p>
+        <p>这题和力扣第二题很像。<p>
 
             <div class="section" id="section4"></div>
             <h2>1148</h2>

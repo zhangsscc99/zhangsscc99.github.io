@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链表专题</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .main-title {
+            color: #007BFF;
+            font-size: 2em;
+            text-align: center;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            border-left: 3px solid #007BFF;
+            padding: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .link-to-other {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1em;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="link-to-other-page">
+            <a href="index.html">首页/返回</a>
+        </div>
+        <h1 class="main-title">链表专题</h1>
+        <p></p>
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <div class="toc-item"><a href="#section1">1757 sql</a></div>
+            <div class="toc-item"><a href="#section2">876. 链表的中间结点</a></div>
+            <div class="toc-item"><a href="#section3">160. 相交链表</a></div>
+            <div class="toc-item"><a href="#section4">206 反转链表</a></div>
+            <div class="toc-item"><a href="#section5">2 两数相加</a></div>
+            <div class="toc-item"><a href="#section6">92 反转链表II</a></div>
+            <div class="toc-item"><a href="#section7">141 环形链表</a></div>
+            <div class="toc-item"><a href="#section8">142 环形链表II</a></div>
+            
+        </div>
+
+        <div class="section" id="section1"></div>
+        <h2>力扣1757</h2>
+        <pre class="code-block">
+            # Write your MySQL query statement below
+select product_id 
+from Products
+where low_fats = 'Y' and recyclable = 'Y'
+
+
+        </pre>
+        <p>省略，无脑题
+        </p>
+
+            <div class="section" id="section2"></div>
+        <h2>876. 链表的中间结点</h2>
+        <pre class="code-block">
+            class Solution {
+                public ListNode middleNode(ListNode head) {
+                    ListNode fast = head;
+                    ListNode slow = head;
+                    
+            
+                    while (fast != null && fast.next != null) {
+                        fast = fast.next.next;
+                        slow = slow.next;
+                    }
+            
+                    return slow;
+            
+                }
+            }
+        </pre>
+        <p>这道题关键点在于 设置快慢指针。数一数，当fast没法继续前进的时候，slow正好是中间节点。。
+        <p>
+
+            <div class="section" id="section3"></div>
+        <h2>160. 相交链表</h2>
+        <pre class="code-block">
+            public class Solution {
+                public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+                    ListNode p1 = headA;
+                    ListNode p2 = headB;
+            
+                    while (p1 != p2) {
+                        if (p1 != null) {
+                            p1 = p1.next;
+                        } else {
+                            p1 = headB;
+                        }
+            
+                        if (p2 != null) {
+                            p2 = p2.next;
+                        } else {
+                            p2 = headA;
+                        }
+                    }
+            
+                    return p1;
+                    
+                }
+            }
+        </pre>
+        <p>这道题关键点在于 p1 p2 要能够等于null。因为有不存在相交节点的case。所以需要用等于null的情况来返回正确的返回值。不能写if (p1.next != null) 
+        <p>
+
+            <div class="section" id="section4"></div>
+            <h2>206 反转链表</h2>
+            <pre class="code-block">
+                class Solution {
+                    public ListNode reverseList(ListNode head) {
+                        if (head == null || head.next == null) {
+                            return head;
+                        }
+                
+                        ListNode last = reverseList(head.next);
+                        head.next.next = head;
+                        head.next = null;
+                
+                        return last;
+                
+                    }
+                }
+            </pre>
+            <p>这道题关键点在于用递归。
+            <p>
+
+    <div class="section" id="section5"></div>
+    <h2>2 两数相加</h2>
+    <pre class="code-block">
+        class Solution {
+            public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+                ListNode dummy = new ListNode(0);
+                ListNode cur = dummy;
+                int carry = 0;
+        
+                while (l1 != null || l2 != null || carry != 0) {
+                    if (l1 != null ) {
+                        carry += l1.val;
+                        l1 = l1.next;
+                    }
+        
+                    if (l2 != null) {
+                        carry += l2.val;
+                        l2 = l2.next;
+                    }
+        
+                    cur.next = new ListNode(carry % 10);
+                    cur = cur.next;
+                    carry = (int)(carry / 10);
+        
+                }
+        
+                return dummy.next;
+        
+        
+        
+            }
+        }
+    </pre>
+    <p>这道题关键点在于正好可以用逆序进行答案的返回，所以正好可以把进位往next接。cur是需要不断取余数的 而且cur需要把进位进行更新 while里的条件也至关重要 里面的carry l1 l2任意一个不为0或者null的时候 
+        都是可以往前进的。int要用整除。
+    <p>
+
+        <div class="section" id="section6"></div>
+        <h2>92 反转链表II</h2>
+        <pre class="code-block">
+            class Solution {
+                public ListNode reverseBetween(ListNode head, int left, int right) {
+                    if (left == 1) {
+                        return reverseN(head, right);
+                    }
+            
+                    head.next = reverseBetween(head.next, left - 1, right - 1);
+                    return head;
+            
+                }
+            
+                ListNode successor = new ListNode(0);
+            
+                public ListNode reverseN(ListNode head, int n) {
+                    if (n == 1) {
+                        successor = head.next;
+                        return head;
+            
+                    }
+            
+                    ListNode last = reverseN(head.next, n - 1);
+            
+                    head.next.next = head;
+                    head.next = successor;
+            
+                    return last;
+            
+            
+                }
+            }
+        </pre>
+        <p>这道题关键点在于需要熟练反转链表I。先把需要反转的区域调整到left == 1的位置。然后对剩下的右边的链表进行处理 注意处理successor。
+
+        <p>
+
+            <div class="section" id="section7"></div>
+            <h2>141 环形链表</h2>
+            <pre class="code-block">
+                public class Solution {
+                    public boolean hasCycle(ListNode head) {
+                        ListNode fast = head;
+                        ListNode slow = head;
+                
+                        while (fast != null && fast.next != null) {
+                            fast = fast.next.next;
+                            slow = slow.next;
+                            if (fast == slow) {
+                                return true;
+                            }
+                
+                        }
+                        return false;
+                    }
+                }
+            </pre>
+            <p>快慢指针的while循环条件一般都是这个。
+            <p>
+
+    <div class="section" id="section8"></div>
+    <h2>142 环形链表II</h2>
+    <pre class="code-block">
+        public class Solution {
+            public ListNode detectCycle(ListNode head) {
+                ListNode fast = head;
+                ListNode slow = head;
+        
+                while (fast != null && fast.next != null) {
+                    fast = fast.next.next;
+                    slow = slow.next;
+                    if (slow == fast) {
+                        break;
+                    }
+                }
+        
+                if (fast == null || fast.next == null) {
+                    return null;
+                }
+        
+                fast = head;
+        
+                while (fast != slow) {
+                    fast = fast.next;
+                    slow = slow.next;
+                }
+        
+                return slow;
+                
+            }
+        }
+    </pre>
+    <p>先找到环里相交的点。然后此时把fast重新设置回head。注意 fast行走距离2k，slow行走距离k，假设交点距离环的起点距离m，那么head距离环的起点就是k - m。
+        此刻，如果fast从头开始到环的起点，slow也同步从交点开始行走，那么他们在环的起点可以相遇而且正好走了k-m距离。这个可以用作结论记住。
+    <p>
+    </div>
+</body>
+</html>

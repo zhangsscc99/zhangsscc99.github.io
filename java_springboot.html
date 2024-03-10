@@ -166,6 +166,37 @@ Springboot automcatically converts it to json format for you.
 
 你的示例中漏掉了record类的主体部分，它应该包含在花括号 {} 中间。在这个部分，你可以添加额外的方法或者其他成员。
 
+15耦合度
+耦合度是软件工程中描述模块之间相互依赖程度的概念。它表示一个模块对其他模块的依赖程度，或者说一个模块内部的元素之间的依赖程度。耦合度越低，表示模块之间的独立性越高，修改一个模块不会对其他模块造成太大影响，提高了系统的灵活性、可维护性和可扩展性。
+
+在软件设计中，通常会努力降低耦合度，以提高代码的质量和可维护性。有几种类型的耦合度，包括：
+
+低耦合（Loose Coupling）：模块之间的依赖程度很低，它们之间的关系较为独立，修改一个模块不会对其他模块造成影响。这种情况下，系统的可维护性和可扩展性会更好。
+
+高耦合（Tight Coupling）：模块之间的依赖程度很高，它们之间的关系紧密，修改一个模块可能会导致其他模块的修改。这种情况下，系统的灵活性会受到影响，维护和扩展会更加困难。
+
+无耦合（No Coupling）：模块之间完全独立，彼此没有任何依赖关系。这种情况下，修改一个模块不会影响其他任何模块，但在实际应用中很难实现。
+
+降低耦合度的方法包括使用接口而不是具体实现、使用依赖注入、使用设计模式等。通过合理设计和组织代码，可以有效地降低模块之间的耦合度，提高系统的可维护性和可扩展性。
+
+
+16
+在这段代码中，@RequestParam是Spring框架中的注解，用于从HTTP请求中获取查询参数（Query Parameter）。在hello方法中，locale参数使用@RequestParam注解标记，这表示该参数可以从HTTP请求的查询字符串中提取，并且是可选的（因为设置了required = false）。如果请求中没有提供locale参数，它将默认为"en_US"。
+
+具体来说，@RequestParam注解用于指定要映射到方法参数的查询参数的名称。在这个例子中，locale参数是通过@RequestParam注解指定的，它表示接收名为locale的查询参数的值。
+
+17
+create table persons(
+    person_id INTEGER,
+    last_name text,
+    first_name text,
+    address text
+)
+insert into persons(c1, c2, c3, c4) 
+values (v1, v2, v3, v4)
+values可以是单引号括好的
+delete from table where condition 
+用;进行结尾
 </p>
         </div>
     </div>

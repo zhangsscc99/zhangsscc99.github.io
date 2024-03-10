@@ -47,8 +47,8 @@
             <div class="toc-item"><a href="#section1">2215 找出两数组的不同</a></div>
             <div class="toc-item"><a href="#section2">1 两数之和</a></div>
             <div class="toc-item"><a href="#section3">128 最长连续序列</a></div>
-            <div class="toc-item"><a href="#section4">128 sort做法</a></div>
-            <div class="toc-item"><a href="#section5">2 两数相加</a></div>
+            <div class="toc-item"><a href="#section3">128 sort做法</a></div>
+            <div class="toc-item"><a href="#section5">13 罗马数字转整数</a></div>
             <div class="toc-item"><a href="#section6">92 反转链表II</a></div>
             <div class="toc-item"><a href="#section7">141 环形链表</a></div>
             <div class="toc-item"><a href="#section8">142 环形链表II</a></div>
@@ -161,40 +161,46 @@
             <p>
 
     <div class="section" id="section5"></div>
-    <h2>2 两数相加</h2>
+    <h2>13 罗马数字转整数</h2>
     <pre class="code-block">
         class Solution {
-            public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-                ListNode dummy = new ListNode(0);
-                ListNode cur = dummy;
-                int carry = 0;
-        
-                while (l1 != null || l2 != null || carry != 0) {
-                    if (l1 != null ) {
-                        carry += l1.val;
-                        l1 = l1.next;
+            public int romanToInt(String s) {
+                int preNum = getValue(s.charAt(0));
+                int sum = 0;
+                for (int i = 1; i < s.length(); i++) {
+                    int num = getValue(s.charAt(i));
+                    if (preNum < num) {
+                        sum -= preNum;
+                    } else {
+                        sum += preNum;
                     }
+                    preNum = num;
         
-                    if (l2 != null) {
-                        carry += l2.val;
-                        l2 = l2.next;
-                    }
-        
-                    cur.next = new ListNode(carry % 10);
-                    cur = cur.next;
-                    carry = (int)(carry / 10);
         
                 }
-        
-                return dummy.next;
-        
-        
+                sum += preNum;
+                return sum;
         
             }
+        
+            private int getValue(char ch) {
+                switch(ch) {
+                    case 'I': return 1;
+                    case 'V': return 5;
+                    case 'X': return 10;
+                    case 'L': return 50;
+                    case 'C': return 100;
+                    case 'D': return 500;
+                    case 'M': return 1000;
+                    default: return 0;
+                }
+                
+            }
+        
+        
         }
     </pre>
-    <p>这道题关键点在于正好可以用逆序进行答案的返回，所以正好可以把进位往next接。cur是需要不断取余数的 而且cur需要把进位进行更新 while里的条件也至关重要 里面的carry l1 l2任意一个不为0或者null的时候 
-        都是可以往前进的。int要用整除。
+    <p>实际不算是哈希题目 但是还可以，姑且作为题目练手，对字符串练习很有用。
     <p>
 
         <div class="section" id="section6"></div>

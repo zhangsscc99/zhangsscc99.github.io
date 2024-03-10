@@ -138,40 +138,16 @@ where S.year is not null
             <p>
 
     <div class="section" id="section8"></div>
-    <h2>142 环形链表II</h2>
+    <h2>620/h2>
     <pre class="code-block">
-        public class Solution {
-            public ListNode detectCycle(ListNode head) {
-                ListNode fast = head;
-                ListNode slow = head;
-        
-                while (fast != null && fast.next != null) {
-                    fast = fast.next.next;
-                    slow = slow.next;
-                    if (slow == fast) {
-                        break;
-                    }
-                }
-        
-                if (fast == null || fast.next == null) {
-                    return null;
-                }
-        
-                fast = head;
-        
-                while (fast != slow) {
-                    fast = fast.next;
-                    slow = slow.next;
-                }
-        
-                return slow;
-                
-            }
-        }
+        # Write your MySQL query statement below
+select *
+from cinema
+where description != 'boring' and mod(id, 2) = 1
+order by rating desc;
     </pre>
-    <p>先找到环里相交的点。然后此时把fast重新设置回head。注意 fast行走距离2k，slow行走距离k，假设交点距离环的起点距离m，那么head距离环的起点就是k - m。
-        此刻，如果fast从头开始到环的起点，slow也同步从交点开始行走，那么他们在环的起点可以相遇而且正好走了k-m距离。这个可以用作结论记住。
-    <p>
+    <p>select * from Movie 这里就是得全选。description != 'boring' and mod(id, 2) = 1. order by rating desc.这就是降序。而且要注意mod的数值。
+        这种题就是看语法，知识点熟练程度</p>
     </div>
 </body>
 </html>

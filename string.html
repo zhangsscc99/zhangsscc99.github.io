@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链表专题</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .main-title {
+            color: #007BFF;
+            font-size: 2em;
+            text-align: center;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            border-left: 3px solid #007BFF;
+            padding: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .link-to-other {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1em;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="link-to-other-page">
+            <a href="index.html">首页/返回</a>
+        </div>
+        <h1 class="main-title">链表专题</h1>
+        <p></p>
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <!-- <div class="toc-item"><a href="#section1">1757 sql</a></div>
+            <div class="toc-item"><a href="#section2">584</a></div>
+            <div class="toc-item"><a href="#section3">595</a></div>
+            <div class="toc-item"><a href="#section4">206 反转链表</a></div>
+            <div class="toc-item"><a href="#section5">2 两数相加</a></div>
+            <div class="toc-item"><a href="#section6">92 反转链表II</a></div>
+            <div class="toc-item"><a href="#section7">141 环形链表</a></div>
+            <div class="toc-item"><a href="#section8">142 环形链表II</a></div> -->
+            
+        </div>
+
+        <div class="section" id="section1"></div>
+        <h2>力扣14 最长公共前缀</h2>
+        <pre class="code-block">
+            class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        m = len(strs)
+        n = len(strs[0])
+
+        for col in range(n):
+            for row in range(1, m):
+                preRow, Row = strs[row - 1], strs[row]
+                if col >= len(preRow) or col >= len(Row) or preRow[col] != Row[col]:
+                    return strs[row][:col]
+        return strs[0]
+
+
+        </pre>
+        <p>这题不难 但是可以多用来练习字符串。字符串的题还是要多做，多刷，没啥技巧，就是感觉和常用的一些小技巧。
+        </p>
+
+            <div class="section" id="section2"></div>
+        <h2>584 寻找用户推荐人</h2>
+        <pre class="code-block">
+            # Write your MySQL query statement below
+select name 
+from Customer
+where referee_id <> 2 or referee_id is null;
+        </pre>
+        <p>知识点问题 mysql采用的是三值逻辑，任何与null进行的比较都会与unknown进行比较。
+        <p>
+
+            <div class="section" id="section3"></div>
+        <h2>595</h2>
+        <pre class="code-block">
+            # Write your MySQL query statement below
+select name, area, population
+from World
+where area >= 3000000 or population >= 25000000
+        </pre>
+        <p>省略<p>
+
+            <div class="section" id="section4"></div>
+            <h2>1148</h2>
+            <pre class="code-block">
+                # Write your MySQL query statement below
+select distinct author_id as id
+from Views
+where author_id = viewer_id 
+order by author_id asc;</pre>
+            <p>select distinct就是第一个点 另一个是要用as来改写返回的column的名字，然后俩id要相等，其次order by的语法已经忘了。
+            <p>
+
+    <div class="section" id="section5"></div>
+    <h2>1683</h2>
+    <pre class="code-block">
+        # Write your MySQL query statement below
+select tweet_id
+from Tweets
+where char_length(content) > 15
+    </pre>
+    <p>推文长度用char_length表达
+    <p>
+
+        <div class="section" id="section6"></div>
+        <h2>1378</h2>
+        <pre class="code-block">
+            # Write your MySQL query statement below
+select EmployeeUNI.unique_id, Employees.name
+from Employees
+left join EmployeeUNI
+on Employees.id = EmployeeUNI.id
+        </pre>
+        <p>left join 和on需要巩固一下。
+        <p>
+
+            <div class="section" id="section7"></div>
+            <h2>1068</h2>
+            <pre class="code-block">
+                # Write your MySQL query statement below
+select P.product_name, S.year, S.price
+from Product as P
+left join Sales as S 
+on P.product_id = S.product_id
+where S.year is not null
+
+            </pre>
+            <p>这题得根据测试用例debug
+            <p>
+
+    <div class="section" id="section8"></div>
+    <h2>620/h2>
+    <pre class="code-block">
+        # Write your MySQL query statement below
+select *
+from cinema
+where description != 'boring' and mod(id, 2) = 1
+order by rating desc;
+    </pre>
+    <p>select * from Movie 这里就是得全选。description != 'boring' and mod(id, 2) = 1. order by rating desc.这就是降序。而且要注意mod的数值。
+        这种题就是看语法，知识点熟练程度</p>
+
+        <div class="section" id="section9"></div>
+        <h2>1251</h2>
+        <pre class="code-block">
+            # Write your MySQL query statement below
+select P.product_id, round(ifnull(sum(P.price * U.units) / sum(U.units),0), 2) as average_price
+from Prices as P 
+left join UnitsSold as U 
+on P.product_id = U.product_id and U.purchase_date between P.start_date and P.end_date
+group by P.product_id
+        </pre>
+        <p>ifnull的语法，round的语法，date的用法，group by的语法</p>
+    </div>
+
+
+</body>
+</html>

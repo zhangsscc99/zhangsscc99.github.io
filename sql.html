@@ -65,29 +65,18 @@ where low_fats = 'Y' and recyclable = 'Y'
 
 
         </pre>
-        <p>省略，无脑题
+        <p>省略
         </p>
 
             <div class="section" id="section2"></div>
-        <h2>876. 链表的中间结点</h2>
+        <h2>584 寻找用户推荐人</h2>
         <pre class="code-block">
-            class Solution {
-                public ListNode middleNode(ListNode head) {
-                    ListNode fast = head;
-                    ListNode slow = head;
-                    
-            
-                    while (fast != null && fast.next != null) {
-                        fast = fast.next.next;
-                        slow = slow.next;
-                    }
-            
-                    return slow;
-            
-                }
-            }
+            # Write your MySQL query statement below
+select name 
+from Customer
+where referee_id <> 2 or referee_id is null;
         </pre>
-        <p>这道题关键点在于 设置快慢指针。数一数，当fast没法继续前进的时候，slow正好是中间节点。。
+        <p>知识点问题 mysql采用的是三值逻辑，任何与null进行的比较都会与unknown进行比较。
         <p>
 
             <div class="section" id="section3"></div>

@@ -76,14 +76,16 @@
         </p>
 
             <div class="section" id="section2"></div>
-        <h2>584 寻找用户推荐人</h2>
+        <h2>28 找出字符串中第一个匹配项的下标</h2>
         <pre class="code-block">
-            # Write your MySQL query statement below
-select name 
-from Customer
-where referee_id <> 2 or referee_id is null;
+            class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        for i in range(len(haystack) - len(needle) + 1):
+            if haystack[i: i + len(needle)] == needle:
+                return i 
+        return -1
         </pre>
-        <p>知识点问题 mysql采用的是三值逻辑，任何与null进行的比较都会与unknown进行比较。
+        <p>实际是kmp算法是很难的，但是面试不太可能考，就用暴力算法吧。
         <p>
 
             <div class="section" id="section3"></div>

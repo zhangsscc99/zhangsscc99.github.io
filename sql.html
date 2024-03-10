@@ -92,22 +92,12 @@ where area >= 3000000 or population >= 25000000
             <div class="section" id="section4"></div>
             <h2>206 反转链表</h2>
             <pre class="code-block">
-                class Solution {
-                    public ListNode reverseList(ListNode head) {
-                        if (head == null || head.next == null) {
-                            return head;
-                        }
-                
-                        ListNode last = reverseList(head.next);
-                        head.next.next = head;
-                        head.next = null;
-                
-                        return last;
-                
-                    }
-                }
-            </pre>
-            <p>这道题关键点在于用递归。
+                # Write your MySQL query statement below
+select distinct author_id as id
+from Views
+where author_id = viewer_id 
+order by author_id asc;</pre>
+            <p>select distinct就是第一个点 另一个是要用as来改写返回的column的名字，然后俩id要相等，其次order by的语法已经忘了。
             <p>
 
     <div class="section" id="section5"></div>

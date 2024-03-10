@@ -197,6 +197,26 @@ values (v1, v2, v3, v4)
 values可以是单引号括好的
 delete from table where condition 
 用;进行结尾
+
+
+18 springJDBC 和runtimeOnly
+Spring JDBC 是 Spring Framework 提供的一个库，用于简化数据库访问和操作。它处理了传统的 JDBC 编程涉及的常见问题，如打开和关闭连接，处理异常，管理资源等。使用 Spring JDBC，开发人员不必编写冗长的代码来执行基本的数据库操作。它提供了一个模板类JdbcTemplate，可以大大减少编码量。
+
+在传统的 JDBC 代码中，开发人员需要写很多样板代码来处理异常、管理事务、关闭连接等。JdbcTemplate接管了这些常规任务，允许开发人员专注于他们的特定数据库逻辑。Spring 还提供了一种声明式的事务管理方式，可以更加灵活地管理事务。
+
+关于runtimeOnly在 Gradle 的 build 脚本中的含义：
+
+Gradle 是一个项目自动构建工具，它用于自动化应用程序的构建过程。在 Gradle 中，依赖管理是非常重要的部分。依赖可以有不同的配置，决定了库是如何在项目的不同阶段中被包含和使用的。
+
+runtimeOnly 是 Gradle 中的一个配置，它意味着这个依赖将不会在编译时被包括，而只会在运行时被包括。这通常用于那些不需要在编译时参与代码的编译过程，但在运行时提供必要功能的库，比如数据库连接驱动。
+
+例如，如果你在 Gradle 的 build 脚本中这样配置 PostgreSQL 的驱动：
+
+groovy
+Copy code
+runtimeOnly 'org.postgresql:postgresql:版本号'
+这意味着 PostgreSQL 驱动只会在运行时被添加到应用程序的类路径中，编译项目代码时不会包含这个驱动。这通常是因为在开发阶段，代码只需要知道 JDBC 接口，并不需要知道特定数据库的实现细节。这样做可以减少构建过程的复杂性，并减小构建产物的大小。在运行时，当应用程序实际连接数据库时，需要具体的数据库驱动来实现连接。
+
 </p>
         </div>
     </div>

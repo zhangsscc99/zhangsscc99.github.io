@@ -90,7 +90,7 @@ where area >= 3000000 or population >= 25000000
         <p>省略<p>
 
             <div class="section" id="section4"></div>
-            <h2>206 反转链表</h2>
+            <h2>1148</h2>
             <pre class="code-block">
                 # Write your MySQL query statement below
 select distinct author_id as id
@@ -101,40 +101,14 @@ order by author_id asc;</pre>
             <p>
 
     <div class="section" id="section5"></div>
-    <h2>2 两数相加</h2>
+    <h2>1683</h2>
     <pre class="code-block">
-        class Solution {
-            public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-                ListNode dummy = new ListNode(0);
-                ListNode cur = dummy;
-                int carry = 0;
-        
-                while (l1 != null || l2 != null || carry != 0) {
-                    if (l1 != null ) {
-                        carry += l1.val;
-                        l1 = l1.next;
-                    }
-        
-                    if (l2 != null) {
-                        carry += l2.val;
-                        l2 = l2.next;
-                    }
-        
-                    cur.next = new ListNode(carry % 10);
-                    cur = cur.next;
-                    carry = (int)(carry / 10);
-        
-                }
-        
-                return dummy.next;
-        
-        
-        
-            }
-        }
+        # Write your MySQL query statement below
+select tweet_id
+from Tweets
+where char_length(content) > 15
     </pre>
-    <p>这道题关键点在于正好可以用逆序进行答案的返回，所以正好可以把进位往next接。cur是需要不断取余数的 而且cur需要把进位进行更新 while里的条件也至关重要 里面的carry l1 l2任意一个不为0或者null的时候 
-        都是可以往前进的。int要用整除。
+    <p>推文长度用char_length表达
     <p>
 
         <div class="section" id="section6"></div>

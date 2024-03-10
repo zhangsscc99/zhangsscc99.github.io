@@ -124,26 +124,17 @@ on Employees.id = EmployeeUNI.id
         <p>
 
             <div class="section" id="section7"></div>
-            <h2>141 环形链表</h2>
+            <h2>1068</h2>
             <pre class="code-block">
-                public class Solution {
-                    public boolean hasCycle(ListNode head) {
-                        ListNode fast = head;
-                        ListNode slow = head;
-                
-                        while (fast != null && fast.next != null) {
-                            fast = fast.next.next;
-                            slow = slow.next;
-                            if (fast == slow) {
-                                return true;
-                            }
-                
-                        }
-                        return false;
-                    }
-                }
+                # Write your MySQL query statement below
+select P.product_name, S.year, S.price
+from Product as P
+left join Sales as S 
+on P.product_id = S.product_id
+where S.year is not null
+
             </pre>
-            <p>快慢指针的while循环条件一般都是这个。
+            <p>这题得根据测试用例debug
             <p>
 
     <div class="section" id="section8"></div>

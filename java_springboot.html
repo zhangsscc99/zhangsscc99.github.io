@@ -385,6 +385,29 @@ public class UserDTO {
 总结，DTO不是用来替代真正的实际对象的，而是用作在不同系统层之间传输数据的一个便利工具。它们有助于简化方法签名，并提高层之间的数据传输效率。
 
 
+27
+@PostMapping("/auth/login")
+public ResponseEntity<ResponseDTO> loginUser(@RequestBody LoginDTO loginDTO) {
+    // 登录验证逻辑
+    String token = authenticationService.authenticate(loginDTO.getUsername(), loginDTO.getPassword());
+    ResponseDTO responseDTO = new ResponseDTO(true, "User logged in successfully.", token);
+    return ResponseEntity.ok(responseDTO);
+}
+#这里的ok就是状态码吗
+ChatGPT
+是的，在Spring框架中，ResponseEntity.ok() 方法是一种快捷方式，用于创建一个ResponseEntity对象，它将会带有HTTP状态码200 OK。这个状态码表示请求已成功处理。
+
+在您的例子中，loginUser 方法在验证用户凭证并成功生成JWT令牌后，会使用ResponseEntity.ok()来构建一个带有状态码200 OK的响应。该方法还包装了一个ResponseDTO对象，这个对象包含了操作成功的标识、消息以及新生成的JWT令牌。
+
+ResponseEntity是一个泛型类，允许您定义返回类型。ok()方法实际上是ResponseEntity的一个静态辅助方法，它创建了ResponseEntity的一个实例并将其状态码设置为HttpStatus.OK。您可以传入任何类型的身体对象，它将作为HTTP响应的主体返回。
+
+这样的设计既清晰又方便，允许您在不同的情况下构建具有不同状态码和主体的HTTP响应，这是构建RESTful服务时非常常见的做法。
+
+
+
+
+
+
 
 
 

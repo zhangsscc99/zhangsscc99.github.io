@@ -272,6 +272,40 @@ getFileShard (shardIndex, shardSize) {
   },
   shard相关
   需要拿到file，拿到start和end，用slice得到shard过的file
+  用key唯一标识一个文件
+
+  23 restcontroller:
+  handle http requests . 
+  shorthand for controller(instead of view). responsebody. 
+  responsebody tells a controller that the object returned is automatically serialized into JSON and passed
+  back into the httpresponse object. 
+
+  @Controller
+@RequestMapping("/api")
+public class MyController {
+
+    @RequestMapping(value = "/items", method = RequestMethod.GET)
+    public ResponseEntity<List<Item>> getItems() {
+        // ... get items logic ...
+    }
+
+    @RequestMapping(value = "/items", method = RequestMethod.POST)
+    public ResponseEntity<Item> addItem(@RequestBody Item item) {
+        // ... add item logic ...
+    }
+
+    @RequestMapping(value = "/items/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Item> updateItem(@PathVariable("id") Long id, @RequestBody Item item) {
+        // ... update item logic ...
+    }
+
+    @RequestMapping(value = "/items/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteItem(@PathVariable("id") Long id) {
+        // ... delete item logic ...
+    }
+}
+
+
 
 
 

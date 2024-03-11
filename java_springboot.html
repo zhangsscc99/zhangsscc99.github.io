@@ -443,6 +443,23 @@ internalServerError()：响应状态码500 Internal Server Error，服务器遇�
 这些方法的灵活性允许开发人员构建精确描述请求处理结果的HTTP响应，使得客户端开发者能够根据这些HTTP响应状态码采取适当的行动。
 
 
+30 ResponseEntity
+ResponseEntity 的不同返回结果
+ResponseEntity 是Spring框架中用于表示整个HTTP响应的类，包括状态码、头部和体。它提供了很多用于创建响应的方法。以下是一些常用的方法和返回结果的示例：
+
+ok()：响应状态码200 OK。
+status(HttpStatus status)：设置一个自定义的状态码。
+created(URI location)：响应状态码201 Created，用于创建资源后的响应。
+accepted()：响应状态码202 Accepted，通常用于异步处理。
+noContent()：响应状态码204 No Content，表示请求成功但不返回任何主体内容。
+badRequest()：响应状态码400 Bad Request，表示请求由于语法错误而不能被理解。
+notFound()：响应状态码404 Not Found，当请求的资源不存在时使用。
+internalServerError()：响应状态码500 Internal Server Error，服务器遇到了意外情况，阻止了它完成请求。
+每个方法都有其对应的场景。例如，创建一个新资源后，你可能会返回一个created()响应，包含新创建资源的URI。如果你想要返回错误信息，你可能会使用badRequest()或internalServerError()等。
+
+这些方法的灵活性允许开发人员构建精确描述请求处理结果的HTTP响应，使得客户端开发者能够根据这些HTTP响应状态码采取适当的行动。
+
+
 
 
 

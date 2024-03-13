@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排序专题</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .main-title {
+            color: #007BFF;
+            font-size: 2em;
+            text-align: center;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            border-left: 3px solid #007BFF;
+            padding: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .link-to-other {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1em;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="link-to-other-page">
+            <a href="index.html">首页/返回</a>
+        </div>
+        <h1 class="main-title">排序专题</h1>
+        <p>排序很有可能作为很多题目的小技巧 所以需要熟练</p>
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <div class="toc-item"><a href="#section1">50 Pow(x, n)</a></div>
+            <div class="toc-item"><a href="#section2">148 排序链表</a></div>
+            <div class="toc-item"><a href="#section3">56 合并区间</a></div>
+            <div class="toc-item"><a href="#section4">206 反转链表</a></div>
+            <div class="toc-item"><a href="#section5">2 两数相加</a></div>
+            <div class="toc-item"><a href="#section6">92 反转链表II</a></div>
+            <div class="toc-item"><a href="#section7">141 环形链表</a></div>
+            <div class="toc-item"><a href="#section8">142 环形链表II</a></div>
+            
+        </div>
+
+        <div class="section" id="section1"></div>
+        <h2>50 Pow(x, n)</h2>
+        <pre class="code-block">
+            class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        def quickMul(x, n):
+            res = 1
+            x_used = x
+            while n > 0:
+                if n % 2 == 1:
+                    res *= x_used
+                x_used = x_used * x_used
+                n = n // 2
+            return res
+        if n >= 0:
+            return quickMul(x, n)
+        else:
+            return 1 / quickMul(x, -n)
+        </pre>
+        <p>这是for循环的做法。
+        </p>
+
+            <div class="section" id="section2"></div>
+        <h2>148 排序链表</h2>
+        <pre class="code-block">
+            # Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        def merge_sort(head, tail):
+            if not head:
+                return head
+            if head.next == tail:
+                head.next = None
+                return head
+            slow = fast = head
+            while fast != tail:
+                slow = slow.next
+                fast = fast.next
+                if fast != tail:
+                    fast = fast.next
+            mid = slow
+            return merge(merge_sort(head, mid), merge_sort(mid, tail))
+
+        def merge(head1, head2):
+            dummy = ListNode(0)
+            temp, temp1, temp2 = dummy, head1, head2
+            while temp1 and temp2:
+                if temp1.val <= temp2.val:
+                    temp.next = temp1
+                    temp1 = temp1.next
+                else:
+                    temp.next = temp2
+                    temp2 = temp2.next
+                temp = temp.next
+            if temp1:
+                temp.next = temp1
+            elif temp2:
+                temp.next = temp2
+            return dummy.next
+
+        return merge_sort(head, None)
+        </pre>
+        <p>一个是对于归并算法的熟练，就是不停去二分一个arr，然后进行归并。归并的一步好想，二分也好想，但是放在链表里并不简单。
+
+        <p>
+
+            <div class="section" id="section3"></div>
+        <h2>56 合并区间</h2>
+        <pre class="code-block">
+            class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        res = []
+        intervals.sort(key = lambda a: a[0])
+        res.append(intervals[0])
+
+        for cur in intervals[1:]:
+            last = res[-1]
+            if cur[0] <= last[1]:
+                last[1] = max(last[1], cur[1])
+            else:
+                res.append(cur)
+        return res
+
+        class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort(key=lambda x: x[0])
+        res = []
+        for cur in intervals:
+            if len(res) == 0:
+                res.append(cur)
+            elif res[-1][1] < cur[0]:
+                res.append(cur)
+            else:
+                res[-1][1] = max(res[-1][1], cur[1])
+        return res
+
+        </pre>
+        <p>写了两个写法 可能第二个更自然一点 </p>
+
+            <div class="section" id="section4"></div>
+            <h2>27 移除元素</h2>
+            <pre class="code-block">
+                class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        fast = slow = 0
+        while fast < len(nums):
+            if nums[fast] != val:
+                nums[slow] = nums[fast] 
+                slow +=1
+            fast += 1
+        return slow
+            </pre>
+            <p>这道题关键点在于 移除等于val的数值。所以遇到这个数值的时候，不管他，只会找到然后放过来。
+            <p>
+
+    <div class="section" id="section5"></div>
+    <h2>2 两数相加</h2>
+    <pre class="code-block">
+        class Solution {
+            public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+                ListNode dummy = new ListNode(0);
+                ListNode cur = dummy;
+                int carry = 0;
+        
+                while (l1 != null || l2 != null || carry != 0) {
+                    if (l1 != null ) {
+                        carry += l1.val;
+                        l1 = l1.next;
+                    }
+        
+                    if (l2 != null) {
+                        carry += l2.val;
+                        l2 = l2.next;
+                    }
+        
+                    cur.next = new ListNode(carry % 10);
+                    cur = cur.next;
+                    carry = (int)(carry / 10);
+        
+                }
+        
+                return dummy.next;
+        
+        
+        
+            }
+        }
+    </pre>
+    <p>这道题关键点在于正好可以用逆序进行答案的返回，所以正好可以把进位往next接。cur是需要不断取余数的 而且cur需要把进位进行更新 while里的条件也至关重要 里面的carry l1 l2任意一个不为0或者null的时候 
+        都是可以往前进的。int要用整除。
+    <p>
+
+        <div class="section" id="section6"></div>
+        <h2>92 反转链表II</h2>
+        <pre class="code-block">
+            class Solution {
+                public ListNode reverseBetween(ListNode head, int left, int right) {
+                    if (left == 1) {
+                        return reverseN(head, right);
+                    }
+            
+                    head.next = reverseBetween(head.next, left - 1, right - 1);
+                    return head;
+            
+                }
+            
+                ListNode successor = new ListNode(0);
+            
+                public ListNode reverseN(ListNode head, int n) {
+                    if (n == 1) {
+                        successor = head.next;
+                        return head;
+            
+                    }
+            
+                    ListNode last = reverseN(head.next, n - 1);
+            
+                    head.next.next = head;
+                    head.next = successor;
+            
+                    return last;
+            
+            
+                }
+            }
+        </pre>
+        <p>这道题关键点在于需要熟练反转链表I。先把需要反转的区域调整到left == 1的位置。然后对剩下的右边的链表进行处理 注意处理successor。
+
+        <p>
+
+            <div class="section" id="section7"></div>
+            <h2>141 环形链表</h2>
+            <pre class="code-block">
+                public class Solution {
+                    public boolean hasCycle(ListNode head) {
+                        ListNode fast = head;
+                        ListNode slow = head;
+                
+                        while (fast != null && fast.next != null) {
+                            fast = fast.next.next;
+                            slow = slow.next;
+                            if (fast == slow) {
+                                return true;
+                            }
+                
+                        }
+                        return false;
+                    }
+                }
+            </pre>
+            <p>快慢指针的while循环条件一般都是这个。
+            <p>
+
+    <div class="section" id="section8"></div>
+    <h2>142 环形链表II</h2>
+    <pre class="code-block">
+        public class Solution {
+            public ListNode detectCycle(ListNode head) {
+                ListNode fast = head;
+                ListNode slow = head;
+        
+                while (fast != null && fast.next != null) {
+                    fast = fast.next.next;
+                    slow = slow.next;
+                    if (slow == fast) {
+                        break;
+                    }
+                }
+        
+                if (fast == null || fast.next == null) {
+                    return null;
+                }
+        
+                fast = head;
+        
+                while (fast != slow) {
+                    fast = fast.next;
+                    slow = slow.next;
+                }
+        
+                return slow;
+                
+            }
+        }
+    </pre>
+    <p>先找到环里相交的点。然后此时把fast重新设置回head。注意 fast行走距离2k，slow行走距离k，假设交点距离环的起点距离m，那么head距离环的起点就是k - m。
+        此刻，如果fast从头开始到环的起点，slow也同步从交点开始行走，那么他们在环的起点可以相遇而且正好走了k-m距离。这个可以用作结论记住。
+    <p>
+    </div>
+</body>
+</html>

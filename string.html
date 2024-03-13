@@ -40,7 +40,7 @@
         <div class="link-to-other-page">
             <a href="index.html">首页/返回</a>
         </div>
-        <h1 class="main-title">链表专题</h1>
+        <h1 class="main-title">字符串专题</h1>
         <p></p>
         <div class="toc">
             <h2>Table of Contents</h2>
@@ -115,15 +115,23 @@
         <p>这题和力扣第二题很像。很有用的题。注意加完之后再附加上sb结果。注意carry怎么用。<p>
 
             <div class="section" id="section4"></div>
-            <h2>1148</h2>
+            <h2>6 z字形变换</h2>
             <pre class="code-block">
-                # Write your MySQL query statement below
-select distinct author_id as id
-from Views
-where author_id = viewer_id 
-order by author_id asc;</pre>
-            <p>select distinct就是第一个点 另一个是要用as来改写返回的column的名字，然后俩id要相等，其次order by的语法已经忘了。
-            <p>
+                class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        if numRows < 2: return s
+        res = ["" for _ in range(numRows)]
+        index = 0
+        flag = -1
+        for c in s:
+            res[index] += c
+            if index == 0 or index == numRows - 1: flag = -flag
+            index += flag
+        return "".join(res)
+
+
+</pre>
+            <p>这题没那么难 来来回回更新res就行了。 <p>
 
     <div class="section" id="section5"></div>
     <h2>1683</h2>

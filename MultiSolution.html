@@ -78,7 +78,7 @@
         </p>
 
             <div class="section" id="section2"></div>
-        <h2>148 排序链表</h2>
+        <h2>206 反转链表</h2>
         <pre class="code-block">
             # Definition for singly-linked list.
 # class ListNode:
@@ -86,44 +86,21 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        def merge_sort(head, tail):
-            if not head:
-                return head
-            if head.next == tail:
-                head.next = None
-                return head
-            slow = fast = head
-            while fast != tail:
-                slow = slow.next
-                fast = fast.next
-                if fast != tail:
-                    fast = fast.next
-            mid = slow
-            return merge(merge_sort(head, mid), merge_sort(mid, tail))
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev = None
+        cur = head
 
-        def merge(head1, head2):
-            dummy = ListNode(0)
-            temp, temp1, temp2 = dummy, head1, head2
-            while temp1 and temp2:
-                if temp1.val <= temp2.val:
-                    temp.next = temp1
-                    temp1 = temp1.next
-                else:
-                    temp.next = temp2
-                    temp2 = temp2.next
-                temp = temp.next
-            if temp1:
-                temp.next = temp1
-            elif temp2:
-                temp.next = temp2
-            return dummy.next
+        while cur != None:
+            next = cur.next
 
-        return merge_sort(head, None)
+            cur.next = prev
+            prev = cur
+            cur = next
+
+        return prev
         </pre>
-        <p>一个是对于归并算法的熟练，就是不停去二分一个arr，然后进行归并。归并的一步好想，二分也好想，但是放在链表里并不简单。
-
-        <p>
+        <p>reverseLinkedList. 递归迭代
+        </p>
 
             <div class="section" id="section3"></div>
         <h2>56 合并区间</h2>

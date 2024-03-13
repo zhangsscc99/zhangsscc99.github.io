@@ -45,9 +45,9 @@
         <div class="toc">
             <h2>Table of Contents</h2>
             <div class="toc-item"><a href="#section1">27 移除元素</a></div>
-            <div class="toc-item"><a href="#section2">876. 链表的中间结点</a></div>
+            <div class="toc-item"><a href="#section2">876</a></div>
             <div class="toc-item"><a href="#section3">1768</a></div>
-            <div class="toc-item"><a href="#section4">206 反转链表</a></div>
+            <div class="toc-item"><a href="#section4">350 两个数组的交集II</a></div>
             <div class="toc-item"><a href="#section5">2 两数相加</a></div>
             <div class="toc-item"><a href="#section6">92 反转链表II</a></div>
             <div class="toc-item"><a href="#section7">141 环形链表</a></div>
@@ -118,24 +118,34 @@
         <p>这题不难，但是多写写双指针，学学写法，坚持一些面试官看着顺眼的做法。<p>
 
             <div class="section" id="section4"></div>
-            <h2>206 反转链表</h2>
+            <h2>350</h2>
             <pre class="code-block">
-                class Solution {
-                    public ListNode reverseList(ListNode head) {
-                        if (head == null || head.next == null) {
-                            return head;
-                        }
-                
-                        ListNode last = reverseList(head.next);
-                        head.next.next = head;
-                        head.next = null;
-                
-                        return last;
-                
-                    }
-                }
+                class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        nums1.sort()
+        nums2.sort()
+        len1 = len(nums1)
+        len2 = len(nums2)
+        i1 = 0
+        i2 = 0
+        intersection = list()
+        while i1 < len1 and i2 < len2:
+            if nums1[i1] < nums2[i2]:
+                i1 += 1
+            elif nums1[i1] > nums2[i2]:
+                i2 += 1
+            else:
+                intersection.append(nums1[i1])
+                i1 += 1
+                i2 += 1
+        return intersection
+
+
+
+
+        
             </pre>
-            <p>这道题关键点在于用递归。
+            <p>排序加双指针 双指针还是不够熟练。
             <p>
 
     <div class="section" id="section5"></div>

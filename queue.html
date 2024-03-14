@@ -113,30 +113,43 @@
         <p>注意 其实往左的行星是不需要去持续关注的。只需要关注碰撞的情况就可以了。是可以简化的。</p>
 
             <div class="section" id="section3"></div>
-        <h2>394 字符串解码</h2>
+        <h2>649 dota2</h2>
         <pre class="code-block">
-            class Solution:
-    def decodeString(self, s: str) -> str:
-        stack = []
-        res = ""
-        multi = 0
+            class Solution {
+public:
+    string predictPartyVictory(string senate) {
+        int n = senate.size();
 
-        for c in s:
-            if c == '[':
-                stack.append([multi, res])
-                res, multi = "", 0
-            elif c == ']':
-                cur_multi, last_res = stack.pop()
-                res = last_res + cur_multi * res
-            elif '0' <= c <= '9':
-                multi = multi * 10 + int(c)
-            else:
-                res += c
-        return res
+        queue<int> radiant, dire;
+        for (int i = 0; i < n; i++) {
+            if (senate[i] == 'R') {
+                radiant.push(i);
+            } else {
+                dire.push(i);
+            }
+        }
+
+
+        while (!radiant.empty() && !dire.empty()) {
+            if (radiant.front() < dire.front()) {
+                radiant.push(radiant.front() + n);
+            } else {
+                dire.push(dire.front() + n);
+            }
+
+            radiant.pop();
+            dire.pop();
+
+
+        }
+
+        return !dire.empty() ? "Dire" : "Radiant";
+
+    }
+};
         </pre>
-        <p>做累了 就以看题为主了。遇到方括号，init res， 和multi。遇到multi 进行记录。遇到字符 简单加到res里面。
-        直到右边括号 进行正经计算，直接找一个好的test case对着test case写就会容易很多。<p>
-
+        <p>固定的n。简化处理：这种方法简化了对参议员轮回顺序的处理。我们不需要特别关心每一轮结束和下一轮开始的边界条件，只需关注参议员的索引。增加n使得索引自然而然地反映了参议员的投票轮次，从而简化了逻辑。
+这道题很好。贪心你就想想王者荣耀先打一个掉点，那个人就没有输出（还没输出就死了）。</p>
             <div class="section" id="section4"></div>
             <h2>206 反转链表</h2>
             <pre class="code-block">

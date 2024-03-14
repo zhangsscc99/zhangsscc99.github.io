@@ -215,26 +215,14 @@
         </p>
 
             <div class="section" id="section7"></div>
-            <h2>141 环形链表</h2>
+            <h2>1657</h2>
             <pre class="code-block">
-                public class Solution {
-                    public boolean hasCycle(ListNode head) {
-                        ListNode fast = head;
-                        ListNode slow = head;
-                
-                        while (fast != null && fast.next != null) {
-                            fast = fast.next.next;
-                            slow = slow.next;
-                            if (fast == slow) {
-                                return true;
-                            }
-                
-                        }
-                        return false;
-                    }
-                }
+                class Solution:
+    def closeStrings(self, word1: str, word2: str) -> bool:
+        return len(word1) == len(word2) and set(word1) == set(word2) and Counter(Counter(word1).values()) == Counter(Counter(word2).values())
+
             </pre>
-            <p>快慢指针的while循环条件一般都是这个。
+            <p>理解次数的次数很重要。
             <p>
 
     <div class="section" id="section8"></div>

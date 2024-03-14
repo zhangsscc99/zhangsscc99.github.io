@@ -49,7 +49,7 @@
             <div class="toc-item"><a href="#section3">128 最长连续序列</a></div>
             <div class="toc-item"><a href="#section3">128 sort做法</a></div>
             <div class="toc-item"><a href="#section5">13 罗马数字转整数</a></div>
-            <div class="toc-item"><a href="#section6">92 反转链表II</a></div>
+            <div class="toc-item"><a href="#section6">1207</a></div>
             <div class="toc-item"><a href="#section7">141 环形链表</a></div>
             <div class="toc-item"><a href="#section8">142 环形链表II</a></div>
             
@@ -204,42 +204,15 @@
     <p>
 
         <div class="section" id="section6"></div>
-        <h2>92 反转链表II</h2>
+        <h2>1207</h2>
         <pre class="code-block">
-            class Solution {
-                public ListNode reverseBetween(ListNode head, int left, int right) {
-                    if (left == 1) {
-                        return reverseN(head, right);
-                    }
-            
-                    head.next = reverseBetween(head.next, left - 1, right - 1);
-                    return head;
-            
-                }
-            
-                ListNode successor = new ListNode(0);
-            
-                public ListNode reverseN(ListNode head, int n) {
-                    if (n == 1) {
-                        successor = head.next;
-                        return head;
-            
-                    }
-            
-                    ListNode last = reverseN(head.next, n - 1);
-            
-                    head.next.next = head;
-                    head.next = successor;
-            
-                    return last;
-            
-            
-                }
-            }
+            class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        cnt = Counter(arr)
+        return True if len(cnt) == len(set(cnt.values())) else False
         </pre>
-        <p>这道题关键点在于需要熟练反转链表I。先把需要反转的区域调整到left == 1的位置。然后对剩下的右边的链表进行处理 注意处理successor。
-
-        <p>
+        <p>哈希熟练胜于一切。
+        </p>
 
             <div class="section" id="section7"></div>
             <h2>141 环形链表</h2>

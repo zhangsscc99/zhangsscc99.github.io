@@ -151,25 +151,21 @@ public:
         <p>固定的n。简化处理：这种方法简化了对参议员轮回顺序的处理。我们不需要特别关心每一轮结束和下一轮开始的边界条件，只需关注参议员的索引。增加n使得索引自然而然地反映了参议员的投票轮次，从而简化了逻辑。
 这道题很好。贪心你就想想王者荣耀先打一个掉点，那个人就没有输出（还没输出就死了）。</p>
             <div class="section" id="section4"></div>
-            <h2>206 反转链表</h2>
+            <h2>643 </h2>
             <pre class="code-block">
-                class Solution {
-                    public ListNode reverseList(ListNode head) {
-                        if (head == null || head.next == null) {
-                            return head;
-                        }
+                class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        sums = sum(nums[:k])
+        n = len(nums)
+        res = sums
+        for i in range(k, n):
+            sums = sums - nums[i - k] + nums[i]
+            res = max(sums, res)
 
-                        ListNode last = reverseList(head.next);
-                        head.next.next = head;
-                        head.next = null;
-
-                        return last;
-
-                    }
-                }
+        return res / k
             </pre>
-            <p>这道题关键点在于用递归。
-            <p>
+            <p>比较固定的一道滑动窗口。
+            </p>
 
     <div class="section" id="section5"></div>
     <h2>2 两数相加</h2>

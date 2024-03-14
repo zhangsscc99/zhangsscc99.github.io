@@ -44,8 +44,8 @@
         <p></p>
         <div class="toc">
             <h2>Table of Contents</h2>
-            <div class="toc-item"><a href="#section1">20 有效括号</a></div>
-            <div class="toc-item"><a href="#section2">876. 链表的中间结点</a></div>
+            <div class="toc-item"><a href="#section1">2390</a></div>
+            <div class="toc-item"><a href="#section2">735 小行星碰撞</a></div>
             <div class="toc-item"><a href="#section3">160. 相交链表</a></div>
             <div class="toc-item"><a href="#section4">206 反转链表</a></div>
             <div class="toc-item"><a href="#section5">2 两数相加</a></div>
@@ -94,26 +94,26 @@
         <p>
 
             <div class="section" id="section2"></div>
-        <h2>876. 链表的中间结点</h2>
+        <h2>735 小行星碰撞</h2>
         <pre class="code-block">
-            class Solution {
-                public ListNode middleNode(ListNode head) {
-                    ListNode fast = head;
-                    ListNode slow = head;
-                    
-            
-                    while (fast != null && fast.next != null) {
-                        fast = fast.next.next;
-                        slow = slow.next;
-                    }
-            
-                    return slow;
-            
-                }
-            }
+            class Solution:
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
+        stk = []
+        for aster in asteroids:
+            alive = True
+            while alive and aster < 0 and stk and stk[-1] > 0:
+                if stk[-1] < -aster:
+                    alive = True
+                else:
+                    alive = False
+                if stk[-1] <= -aster:
+                    stk.pop()
+            if alive:
+                stk.append(aster)
+        return stk
+
         </pre>
-        <p>这道题关键点在于 设置快慢指针。数一数，当fast没法继续前进的时候，slow正好是中间节点。。
-        <p>
+        <p>注意 其实往左的行星是不需要去持续关注的。只需要关注碰撞的情况就可以了。是可以简化的。</p>
 
             <div class="section" id="section3"></div>
         <h2>160. 相交链表</h2>

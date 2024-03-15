@@ -95,26 +95,29 @@
         <p>
 
             <div class="section" id="section2"></div>
-        <h2>876. 链表的中间结点</h2>
+        <h2>1456 定长子串中元音的最大数目</h2>
         <pre class="code-block">
-            class Solution {
-                public ListNode middleNode(ListNode head) {
-                    ListNode fast = head;
-                    ListNode slow = head;
-                    
-            
-                    while (fast != null && fast.next != null) {
-                        fast = fast.next.next;
-                        slow = slow.next;
-                    }
-            
-                    return slow;
-            
-                }
-            }
+            class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+        def isVowel(ch):
+            return int(ch in "aeiou")
+
+        
+
+        # s = list(s)
+        n = len(s)
+
+        
+        cnt = sum(1 for i in range(k) if isVowel(s[i]))
+        res = cnt
+        for i in range(k, n):
+            cnt += isVowel(s[i]) - isVowel(s[i - k])
+            res = max(cnt, res)
+        return res
+
+        
         </pre>
-        <p>这道题关键点在于 设置快慢指针。数一数，当fast没法继续前进的时候，slow正好是中间节点。。
-        <p>
+        <p>需要减少时间复杂度 逐个更新后面的每个元素。<p>
 
             <div class="section" id="section3"></div>
         <h2>160. 相交链表</h2>

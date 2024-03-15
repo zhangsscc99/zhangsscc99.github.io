@@ -120,34 +120,31 @@
         <p>需要减少时间复杂度 逐个更新后面的每个元素。<p>
 
             <div class="section" id="section3"></div>
-        <h2>160. 相交链表</h2>
+        <h2>1004 </h2>
         <pre class="code-block">
-            public class Solution {
-                public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-                    ListNode p1 = headA;
-                    ListNode p2 = headB;
+            class Solution:
+    def longestOnes(self, nums: List[int], k: int) -> int:
+        r = 0
+        l = 0
+        res = 0
+        n = len(nums)
+        zero = 0
+
+        while r < n:
+            if nums[r] == 0:
+                zero += 1
+            while zero > k:
+                if nums[l] == 0:
+                    zero -= 1
+                l += 1
             
-                    while (p1 != p2) {
-                        if (p1 != null) {
-                            p1 = p1.next;
-                        } else {
-                            p1 = headB;
-                        }
+
             
-                        if (p2 != null) {
-                            p2 = p2.next;
-                        } else {
-                            p2 = headA;
-                        }
-                    }
-            
-                    return p1;
-                    
-                }
-            }
+            res = max(res, r - l + 1)
+            r += 1
+        return res
         </pre>
-        <p>这道题关键点在于 p1 p2 要能够等于null。因为有不存在相交节点的case。所以需要用等于null的情况来返回正确的返回值。不能写if (p1.next != null) 
-        <p>
+        <p>1004 最大连续1的个数III<p>
 
             <div class="section" id="section4"></div>
             <h2>206 反转链表</h2>

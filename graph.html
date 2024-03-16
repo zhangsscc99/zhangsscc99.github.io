@@ -215,6 +215,30 @@ class Solution:
 
         </pre>
         <p>就是dfs的思路而已。用visited辅助进行dfs。</p>
+
+        <div class="section" id="section3"></div>
+        <h2>力扣1466 重新规划路线</h2>
+
+        <pre class="code-block">
+class Solution:
+    def dfs(self, cur, parent, e):
+        res = 0
+        for edge in e[cur]:
+            if edge[0] == parent:
+                continue
+            res += edge[1] + self.dfs(edge[0], cur, e)
+        return res
+
+
+    def minReorder(self, n: int, connections: List[List[int]]) -> int:
+        e = [[] for i in range(n)]
+        for edge in connections:
+            e[edge[0]].append([edge[1], 1])
+            e[edge[1]].append([edge[0], 0])
+        return self.dfs(0, -1, e)
+
+        </pre>
+        <p>这题蛮难的。不好写，要多练习才行。</p>
     </div>
 </body>
 </html>

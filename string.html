@@ -193,16 +193,26 @@
             </p>
 
     <div class="section" id="section8"></div>
-    <h2>620/h2>
+    <h2>334/h2>
     <pre class="code-block">
-        # Write your MySQL query statement below
-select *
-from cinema
-where description != 'boring' and mod(id, 2) = 1
-order by rating desc;
+        class Solution:
+    def increasingTriplet(self, nums: List[int]) -> bool:
+        n = len(nums)
+        if n < 3:
+            return False
+        first, second = nums[0], float('inf')
+
+        for i in range(len(nums)):
+            if nums[i] > second:
+                return True
+            elif nums[i] > first:
+                second = nums[i]
+            else:
+                first = nums[i]
+        return False
+
     </pre>
-    <p>select * from Movie 这里就是得全选。description != 'boring' and mod(id, 2) = 1. order by rating desc.这就是降序。而且要注意mod的数值。
-        这种题就是看语法，知识点熟练程度</p>
+    <p>递增的3元子序列。这题是贪心，不简单的。</p>
 
         <div class="section" id="section9"></div>
         <h2>1251</h2>

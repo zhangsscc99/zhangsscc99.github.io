@@ -134,14 +134,17 @@
             <p>这题没那么难 来来回回更新res就行了。 <p>
 
     <div class="section" id="section5"></div>
-    <h2>1683</h2>
+    <h2>1071 字符串的最大公因子</h2>
     <pre class="code-block">
-        # Write your MySQL query statement below
-select tweet_id
-from Tweets
-where char_length(content) > 15
+        class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        len_gcd = math.gcd(len(str1), len(str2))
+        res = str1[:len_gcd]
+        if str1 + str2 == str2 + str1:
+            return res
+        return ""
     </pre>
-    <p>推文长度用char_length表达
+    <p>用gcd的知识点，还是缺了知识点
     <p>
 
         <div class="section" id="section6"></div>

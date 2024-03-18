@@ -215,16 +215,35 @@
     <p>递增的3元子序列。这题是贪心，不简单的。</p>
 
         <div class="section" id="section9"></div>
-        <h2>1251</h2>
+        <h2>443</h2>
         <pre class="code-block">
-            # Write your MySQL query statement below
-select P.product_id, round(ifnull(sum(P.price * U.units) / sum(U.units),0), 2) as average_price
-from Prices as P 
-left join UnitsSold as U 
-on P.product_id = U.product_id and U.purchase_date between P.start_date and P.end_date
-group by P.product_id
+            class Solution:
+            def compress(self, chars: List[str]) -> int:
+                def reverse(left, right):
+                    while left < right:
+                        chars[left], chars[right] = chars[right], chars[left]
+                        left += 1
+                        right -= 1
+                
+                n = len(chars)
+                write = left = 0 
+                for read in range(n):
+                    if read == n - 1 or chars[read] != chars[read + 1]:
+                        chars[write] = chars[read]
+                        write += 1
+                        num = read - left + 1
+                        if num > 1:
+                            anchor = write
+                            while num > 0:
+                                chars[write] = str(num % 10)
+                                write += 1
+                                num //= 10
+                            reverse(anchor, write - 1)
+                        left = read + 1
+                return write
+        
         </pre>
-        <p>ifnull的语法，round的语法，date的用法，group by的语法</p>
+        <p>这个是简单的。但是方法是有点局限的。</p>
     </div>
 
 

@@ -75,6 +75,38 @@
             偏门可能无关。常见而且难的。
             正常问题还是踩坑问题。
 
+            3交易一致性问题。
+            重复支付。
+            超时退的问题。
+            交易请求。
+            用户下单 交易系统 insert交易记录。
+            status = 初始。
+            支付系统。
+            下单支付。支付成功 异步的方式通知的。
+            回调。回馈。
+            有延迟。重试了怎么办。接受支付消息。每隔一段时间又发了。
+            已经success，支付系统又来了，update status成功，又发货。make payment，发货两次。
+            引入一个操作。分布式系统里的防重操作。
+            伪代码sql语句怎么写。做一次select查询。
+            select * from order_info where id = "20201020"
+            java代码判断status == “初始” 执行3 否则直接返回。
+            update order_info set status = "成功" where id = 20201020
+            网络时差 时延
+
+            伪防重。防重幂等。
+            悲观锁的方式：begin一个transaction。
+            1. select * from order_info where id = "20201020" for update.
+            加record lock。一旦有第二个发送 一样for update。没有commit和rollback。
+            record lock没有释放，阻塞。
+
+            使用乐观锁。begin transaction。java代码判断status == 初始。执行3 
+            否则直接返回rollback。
+
+            2. 超时退的问题。
+            商品系统回滚库存。营销系统回滚优惠券。
+            商品系统。 回滚操作，分布式事务有要求。
+            回滚内容。回滚失败如何解决。重复回滚如何预防。
+
 
             健身： 3.14 容量 胸部7000kg 背部和二头2500kg 蛋白奶昔一瓶
 

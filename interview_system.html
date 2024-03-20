@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图论专题</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .main-title {
+            color: #007BFF;
+            font-size: 2em;
+            text-align: center;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            border-left: 3px solid #007BFF;
+            padding: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .link-to-other {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1em;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="link-to-other-page">
+            <a href="index.html">首页/返回</a>
+        </div>
+        <h1 class="main-title">MapReduce</h1>
+        <p></p>
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <div class="toc-item"><a href="#section1">面试经验</a></div>
+            <div class="toc-item"><a href="#section2">3月学习计划</a></div>
+            <div class="toc-item"><a href="#section3">简历修改和公司调查</a></div>
+            <div class="toc-item"><a href="#section4">简历和公司匹配度</a></div>
+            <div class="toc-item"><a href="#section5">八股文（http）</a></div>
+            
+        </div>
+
+        
+        <h2></h2>
+        <pre class="code-block">
+
+        
+            
+        </pre>
+        <div class="section" id="section1"></div>
+        <p style="white-space: pre-line;">
+            面试经验：
+            Tesla考了数据库sql两道题 考了用我公司技术栈写3个函数（api） 然后考了我http的两个问题 又考了我算法两道题
+            这个月我想改下思路 根据公司岗位描述去编简历加一个技术栈相关的项目 然后赶在他发面试前去把编的项目做掉
+            我的想法可以做10个小项目 覆盖各种方向 不一定要花很久深度很深但一定要技术栈相关 然后改出四到五份简历分别投递不同岗位
+
+            考了kafka和rabbitmq消息队列。字节跳动也要求消息队列和redis。
+            问了邮件系统如果被攻击怎么办 好好学一下smtp server和网络安全的内容。迭代和递归都要同时会写。很多简单题需要掌握多种方法。
+            项目可以做深，做广，多拓展一些功能。学习网络安全，网络，系统，服务器。
+            学习kv存储项目。
+
+            我的恨意非常强大。我想变强啊，我想要变强，求求你了，无论如何，请让我变强吧。
+            为了我身边的亲密的人，为了我的家人，我要守护他们，求求你让我变强。
+
+            但是我不能展现出丝毫的懦弱，懦弱之人，毫无用处。
+            我得给我身边的人信心。
+
+            是面试官傻逼、脑子进水，不要找自己的问题，会把自己逼疯的。
+
+            https://www.1point3acres.com/bbs/thread-701963-1-1.html
+
+            健身： 3.14 容量 胸部7000kg 背部和二头2500kg 蛋白奶昔一瓶
+
+几个建议行动：
+1 力扣多刷medium和easy 主要积累巧妙解法
+2 sql刷掉
+3 练习java和C#写api 这个得多做项目了
+4 做一份公司调查 看看每个公司用什么技术栈和项目
+</p>
+<p style="white-space: pre-line;">
+
+如果把求职季度 这么做比喻 
+2月初 摸底考试
+3月 月考
+4月 期中考 
+5月 月考 5月中 期末考
+
+我现在3月 刚面试了here technologies和特斯拉 无论月考成绩如何 我来不及为月考多想 接下来即将迎来挑战的是期中考试！我要奋战百天 期末考试倒计时百天 
+
+我不想苟且在现在的小公司 我要去大公司 我一定要去能让我毕业后return的大公司 每一天我都会活得无比认真
+
+3月
+学习计划 1在力扣已经做的400多题里选出100来道精华的medium 无意义的hard题不纠结。把这100题刷烂。
+2 做一个移动端项目 做一个nft项目/再做一个infra项目
+3 把bq面试的一套视频课程看完。
+4 同步投递国内岗位 投至少100份吧 美国上个月投了300份 这个月再投300份
+5 sql习题做30道
+6 熟练反复写50个api (java C#)
+        </p>
+        
+        <p style="white-space: pre-line;">
+          # MapReduce
+            使用代码统计 20GB文件 
+            可能要统计13分钟 gb级别很久 。pb tb 那就更恐怖了。
+            gfs mapReduce bigTable（03-06年）
+            mapReduce 大任务 拆分到小任务 divide and conquer.
+            
+            让家长爸妈弟弟帮忙写作业。作业撕碎给三个人 map是作业撕碎。 reduce就是作业组装。
+            map shuffle分区排序。合并排序。reduce处理并且出来结果。
+            生成多个map任务
+            根据数据量大小 生成map任务 kv键值对。根据key计算所属分区 去到哪一个reduce。
+            
+            
+            面试经验多了会形成综合性的结论。有些新奇的 综合性大的认知会在脑子里形成。
+            比如结合tesla和here的面试，了解到需要“针对流”投简历。
+            
+        </p>
+
+            <div class="section" id="section3">简历修改和公司调查</div>
+        <p style="white-space: pre-line;">
+            我不懂甚至不怎么听说的技术栈：RDBMS（貌似是database management system 但是不知道r是什么
+            Kubernetes不懂（DE方向）遇到三次 两次是sde方向
+            Robotics不太会
+            Go不太会
+            Helm不太会 
+            Cypress不太会
+            Agile 遇到两次（tesla和caci等）
+            elastic（2次）
+            low-level OS internals in Windows
+            windows OS kernel
+            system design, architecture
+            测试：jest，nunit，playwright，cypress，
+            部署：docker，kubernetes，jenkins
+            开发方式理念：agile
+
+            nvidia: hardware architecture.
+            performance analysis
+            embedded accelerators- automotive or robotics
+            computer graphics: accelerated rendering apis: opengl, vulkan, directX
+            autonomous driving, infotainment
+            C++
+            real time rendering algo
+            ray tracing,
+            gpu graphics pipeline
+            gpu architecture
+            compute programming apis
+            multi-threaded programming techniques
+            cuda parallel programming
+            gpu development, chip design
+            GPU apis, unix/ shell scripting
+            ElasticSearch
+            spark, elk, cassandra, kafka, angular
+            high performance computing
+            graphics apis(做一个项目)
+            reproduce一个compiler相关的论文
+            Amazon: distributed systems, linear programming
+
+            3月 spotify 4月nft around 5月 systems architecture 6月 graphics 7月 elastic search kafka 
+            8月 巩固system design 分布式系统 操作系统
+
+            返璞归真：还是把前后端学扎实 还有系统设计 刷题。剩下的学有余力再去弄。有的放矢。
+            https://www.1point3acres.com/bbs/thread-795715-2-1.html
+            jobscan多用一下
+
+        </p>
+
+        <div class="section" id="section4">简历和公司匹配度</div>
+
+        <p style="white-space: pre-line;">
+            tesla: 39%
+            spotify: 38%
+            
+              
+          </p>
+
+        <div class="section" id="section5">八股文，ood，system design</div>
+        <p style="white-space: pre-line;">https://juejin.cn/post/7139706559092752414
+            如果多做几个项目 对于写api，对于http get post delete put以及几个状态码就应该非常熟悉。
+            对于database的sql也应该做到非常熟悉才对。
+
+            https://www.youtube.com/watch?v=CsWFuFdlBVU
+            学习ood
+1 system design(design twitter)
+            Suppose you work as an engineer at a well-known company providing social services. Your task is to improve real-time event processing to get frequent results. Which tool below will help you the most in this scenario?
+
+           Apache Kafka is a framework for distributed real-time event processing and storage. 
+           2.Assume that an account of a public figure with millions of followers posts a Tweet on Twitter. Your system will need to handle millions of interactions with this Tweet by the account’s millions of followers. Which solution below is the best way to handle this traffic, assuming that the system knows the audience details of the Tweet?
+           increase or dedicate some servers to particular locations where a large portion of the audience belongs. 
+
+           design twitter: storage, bandwidth, computational resources
+           api design
+           3 怎么design一个twitter
+           第一 我们要去思考一些functional requirements/ non-functional requirements
+           post tweets: post one or more
+           delete, like, reply, search, follow, view User
+           non-functional: low latency. scalability of computational resources
+           4 什么是CDN
+           content delivery network
+           5 什么是load balancer
+           performance.
+           adding servers. scalability
+           availability
+           6 REST API复习
+           的，REST API通常非常适合Web应用程序（Web apps）开发，原因如下：
+
+简单性：REST利用了HTTP协议的现有特性，如HTTP方法（GET、POST、PUT、DELETE等）来对资源进行操作。这使得REST API相对简单易懂，并且易于实现。
+
+无状态性：REST是无状态的，这意味着每个请求都应包含执行请求所需的所有信息，而不依赖于之前的请求。这种特性使得REST服务更容易扩展，并且更适合Web环境，其中客户端与服务器之间的交互可能非常频繁且独立。
+
+可缓存性：RESTful服务的响应可以被明确地标记为可缓存或不可缓存，这有助于提高应用程序的性能和效率，通过减少对服务器的直接请求。
+
+统一接口：REST的统一接口约束使得与API的交互更加一致和标准化，这有助于开发者更快地理解和使用API，同时也便于API的维护和更新。
+
+灵活性：由于REST基于标准的HTTP协议，它可以使用任何可以发送HTTP请求的客户端进行交云。这使得创建多平台应用程序（如Web、移动和桌面应用程序）变得更加容易，因为它们都可以通过REST API与后端服务进行交互。
+
+可伸缩性：REST API的无状态性和可缓存性使其在处理大量并发请求时表现良好，这对于构建大规模Web应用程序是非常重要的。
+7 search tweet api
+searchTweet(user_id, search_term, max_result, exlude, media_field, expansions, sort_order, next_token, user_location)
+8 reply to tweet
+replyTweet(user_id, tweet_id, tweeted_user_id, reply_type, reply_content, reply_length)
+
+
+        </p>
+        <div class="section" id="section5">mock interview的bq</div>
+        <p style="white-space: pre-line;">
+            要说自己是fullstack程序员 突出springboot java。
+突出restapi的经验。
+
+介绍公司。组织体育比赛。event system。
+create the event system。没有context。
+简历可以写短一点
+做的东西有点空。
+code base里面看别人写的怎么样。
+
+要有一个比较困难的东西讲故事。
+在hiring manager那边只会得到相同的判断。
+一般都是面试senior engineer。不认得你 给出的判断是这样的。
+别的项目比较完整的功能套过来。
+看看code base 看看notification system有哪些东西，逻辑了解得更加透彻一点。
+增加整个功能的长度。
+包括你自己做这个template 你会怎么做。
+mvc framework和springboot有什么不一样。
+intentional的问题。
+答案并不好，spring mvc也是一个mvc的framework。
+大部分情况下 也要develop mvc的
+jpa的功能。
+java persistence api.
+还可以用hibernate。
+就会question你的整个简历的真实性。也许会save time。个人没有.NET的真实性。
+mvc没有答出来 就不行 花过十几个小时。
+简历还需要再去 写下来 看看。
+写下来之后花多长时间。
+算法 4个方面：1 communication 2 code quality 3 verification 4 clarification
+这四条来考察。
+碰到难点了 去沟通。problem-solving。最终的结果 验证的时候有没有发现问题
+做的比较好的是你的communication。还不错的。
+但是中间有个地方，有些面试官 你写错了 不会管的。
+brute force太容易想了。但凡一线公司不会让你用这个算法过。
+o n square。
+用一些sorting algorithm是可以接受的。 free giveaway。 如果同意的话。
+brute force is a give away.
+sorting algorithm.
+你的项目很水是会被发现的。
+第二个hashmap 看看哪个被看过了。
+算法不够灵活。sorting algorithm。
+128题
+nlogn可以。
+最后的communication要好好弄。
+
+提高的就是
+
+
+        </p>
+  
+              
+    </div>
+</body>
+</html>

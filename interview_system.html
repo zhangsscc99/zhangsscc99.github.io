@@ -116,7 +116,26 @@
             事务型消息。
             raft协议。
             读写相等。
+
+            4 mysql
+            client server. 
+            单点的问题 begin 开启对应的事务。 对应的执行 execute。
+            commit或者rollback。
+            事务提交的过程和阶段。
+            client 多个server 。
+            server1和server2
+
+            transaction manager. 事务操作请求。
+            交易系统的交易模型。
+            营销系统。
+            二阶段的方式 1和2 server 发送prepare请求。
+            两次prepare 开启本地事务 对应库存的扣减可以成功的。
+            事务提交到数据库里。prepare ack1 和prepare ack2发送给对应的transaction manager。 
+            库存扣减。发起真正意义上的commit。commit2.
+            对应的server1和2 反馈给transaction manager。 
+            整个二阶段提交的事务执行成功。
             
+
 
 
 

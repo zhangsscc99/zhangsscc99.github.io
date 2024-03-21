@@ -157,6 +157,22 @@
             dollar符号和井号。两种方式。code review。sql语句都是拷贝，不会手写。
             $符号拷贝 不会用预编译的sql 而是字符串拼接。$ 严重的危机 被sql注入的风险。
 
+            6 原栈 xss
+            html页面。网站的广告位。html的信息返回给web browser client。
+            获取browser内部的cookie。用户信息泄露。重大影响。反射型的xss。广告位
+            js代码 很多工作的 存储型的内容去做的。
+            攻击者的评论。open api 发到原栈。发布评论。
+            不断跳alert。骚扰类的 alert。如果一些真正攻击类的script。document.getcookie 
+            post请求 用用户的信息 往原栈post请求。伪造用户的cookie发送请求。
+            攻击站。转账请求 高危。xss。用脚本语言特性 浏览器上执行 模拟用户行为。
+            入口层面 输入做校验。数据都要数据库中才能拉取。关键字做拦截。script绝对不可以进入系统。
+            做替换。script执行请求就没有了。
+            拦截用户非法请求，没法100%。限制太死 反而拦截正常的内容。
+            保护用户cookie。cookie泄露。设置cookie为http-only返回形式。script脚本语言获取用户的cookie。
+            http only的访问方式 而不是脚本。
+
+            
+
 
 
 

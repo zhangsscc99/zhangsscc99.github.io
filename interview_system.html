@@ -317,6 +317,33 @@ document object represents your web page
 脑裂和lease。
 
 
+17 不同集群数据不一样。
+不同的领导 大导 脑裂的问题。
+全局过半的解决方案。
+5台服务器的过半 大于等于3的选票 当选leader。
+zookeeper解决脑裂 的方案。
+集群的机器通信。自己投自己。
+三台机器。
+
+
+18 springboot service and controller
+在软件架构中，特别是在遵循分层架构的应用程序中，将Controller和Service分开设计是为了关注点分离（Separation of Concerns, SoC）和单一职责原则（Single Responsibility Principle, SRP）。这样做有几个好处：
+
+分层清晰：每层负责不同的任务。Controller层主要负责处理HTTP请求，验证输入，返回响应等。而Service层负责业务逻辑，它执行具体的操作，如数据处理和计算。
+
+重用性：Service层可以被应用中的多个Controller重用。这意味着相同的业务逻辑不需要在不同的Controller中重复编写。
+
+测试容易：分层架构允许独立测试每一层。例如，可以单独对Service层编写单元测试，而不需要关心HTTP请求的处理。
+
+灵活性和可维护性：如果需要更改业务逻辑，只需要更改Service层的代码。同样，如果更改请求处理方式或引入新的请求类型，通常只影响Controller层。
+
+减少代码耦合：控制器和服务之间通过定义清晰的接口进行通信，这有助于减少代码间的耦合度。
+
+易于管理事务：业务逻辑层（Service层）是处理应用程序事务的理想位置，可以在这一层处理诸如数据库事务之类的操作。
+
+在Spring Framework中，这种模式特别普遍，因为它符合Spring的设计哲学，Spring推荐的是一个轻量级的Controller层和一个充满业务逻辑的Service
+
+
 
 
             

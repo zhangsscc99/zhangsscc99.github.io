@@ -812,6 +812,28 @@ jvm就是软件模拟的可以运行java程序的虚拟计算机 虚拟环境。
 54 jvm是进程虚拟机。vmware是系统虚拟机。
 jvm不涉及操作系统的直接运行或模拟。
 
+55 why stack  
+所以往往递归回溯这些都能按照实际顺序实现 得益于栈的内存管理 对吗
+ChatGPT
+Absolutely! Recursion and backtracking algorithms inherently rely on the call stack to manage their execution order. Each recursive call adds a new frame to the stack with its own set of local variables and parameters. When a recursive call is completed, the program execution returns to the previous stack frame, effectively "backtracking" to the state before the recursive call. This mimics the Last In, First Out (LIFO) behavior of a stack, which is fundamental to how recursion and backtracking are executed in programming.
+
+
+
+56
+那用堆的时候是什么时候 为什么呢
+ChatGPT
+The heap is used when you need dynamic memory allocation — when the amount of memory needed is not known at compile time or you need to allocate a large block of memory. Here are some scenarios when heap is used:
+
+Large Objects: When you need to allocate a large block of memory (e.g., a large array or a big object), and the size is too large for the stack, which has limited space.
+
+Dynamic Allocation: When the memory needs to persist beyond the scope of the function call that created it. Unlike stack memory, which is deallocated automatically when a function exits, heap memory remains allocated until it is freed explicitly, making it ideal for variables whose lifetime is not limited to the scope in which they are created.
+
+Flexible Management: When you require more complex memory management features, such as reallocating to a bigger or smaller size based on runtime conditions.
+
+Avoiding Stack Overflow: To prevent stack overflow caused by deep recursion or allocating too much local storage within a function.
+
+
+
 
 
 

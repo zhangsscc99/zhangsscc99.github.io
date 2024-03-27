@@ -755,6 +755,15 @@ exception是程序可以处理的。
 45 golang 
 Gin
 
+46 thread类 
+runnable方法
+没有返回值就没法获得多线程运行的结果。
+第三种实现方式。
+特点：获取到多线程运行的结果。
+创建一个类MyCallable实现Callable接口。
+重写call。是有返回值的，表示多线程运行的结果。
+创建muycallable的对象，表示多线程要执行的任务。
+
 
 
 

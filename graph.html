@@ -239,6 +239,40 @@ class Solution:
 
         </pre>
         <p>这题蛮难的。不好写，要多练习才行。</p>
+
+
+        <h2>力扣17 电话号码组合</h2>
+
+        <pre class="code-block">
+class Solution:
+class Solution:
+def __init__(self):
+    self.res = []
+    self.MAPPING = "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"
+
+
+def letterCombinations(self, digits: str) -> List[str]:
+    n = len(digits)
+    if n == 0:
+        return []
+
+    res = []
+    path = [''] * n
+
+    def dfs(i):
+        if i == n:
+            res.append("".join(path))
+            return
+        else:
+            for c in self.MAPPING[int(digits[i])]:
+                path[i] = c 
+                dfs(i + 1)
+
+    dfs(0)
+    return res
+
+        </pre>
+        <p>主要是用path 进行不断的替换。还是有难度的。主要的难度还是在于熟练度。</p>
     </div>
 </body>
 </html>

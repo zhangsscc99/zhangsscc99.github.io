@@ -1013,7 +1013,18 @@ ChatGPT
 
 67 synchronized写在循环外面 可能导致票卖完了 单窗口
 
+string builder 和 string buffer不一样。
+string builder线程不安全。
 
+jdk5之后的新的锁对象lock。
+lock实现提供比使用synchronized方法和语句可以获得更广泛的锁定操作。
+lock中提供了获得锁和释放锁的方法。
+void lock 获得锁
+void unlock 释放锁
+
+
+lock是接口 不能直接实例化的 要用实现类 reentrantlock来实例化
+构造方法。创建一个reentrantlock实例。
 
 
 

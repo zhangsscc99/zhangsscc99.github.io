@@ -243,4 +243,27 @@ AOP（面向切面编程）：在 AOP 中，动态代理可以用来实现方法
 远程方法调用（如 RMI、RPC）：动态代理可以代理远程对象，使得调用远程方法就像调用本地方法一样。
 数据库ORM框架：如 MyBatis，使用动态代理技术生成 Mapper 接口的实现，从而避免了手动编写 DAO 实现的工作。
 
+
+11 dao(hibernate, spring jpa), dto, mapper(mybatis), entity
+在 Spring 框架的上下文中，DAO（Data Access Object）通常指的是一个旧的模式，用于封装数据库操作的代码。而当你提到 Spring Data JPA 或 Spring Data JDBC 的 repository 接口时，它们实际上是 DAO 的一种现代替代品，提供了更高级的数据持久层抽象。
+
+Repository Interface
+Spring Data 提供了 Repository 接口，这是一种高级抽象，它封装了数据存储的访问逻辑。Spring Data Repository 接口的目的是简化数据访问层的代码，并减少样板代码。在 Spring Data JPA 中，这通常与 ORM 框架如 Hibernate 配合使用；在 Spring Data JDBC 中，它直接与数据库交互。
+
+Repository 的特点
+减少样板代码：Spring Data Repository 接口可以自动实现许多常见的数据访问操作，无需编写实现代码。
+方法签名查询：你可以通过定义方法签名来创建查询，Spring Data 会提供实现。例如，findByUsername(String username) 就会生成一个根据用户名查询的操作。
+支持多种存储策略：Spring Data 提供了对不同数据存储策略的支持，比如关系数据库、NoSQL 数据库、REST API 等。
+Repository 接口与 DAO 的对比
+DAO：传统上用于抽象化数据访问逻辑，通常需要手动编写实现和管理 SQL 语句或 ORM 实体。
+Repository：在 Spring Data 中，是一种更高级的抽象，它扩展了 CrudRepository 或 PagingAndSortingRepository 接口。它们通常不需要显式的实现，因为 Spring Data 可以根据方法命名策略自动提供实现。
+在 Spring Data 中，repository 接口扮演了 DAO 的角色，但以一种更声明性和更少编码的方式来实现。你不需要写实现类；Spring Data 会为你的接口生成代理实现，执行必要的数据库操作。这使得数据访问层更加简洁，易于开发和维护。
+
+
+
+
+
+
+
+
             

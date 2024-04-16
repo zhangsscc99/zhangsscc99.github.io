@@ -401,7 +401,20 @@ mq如何避免消息堆积。
 
 
 
-22 
+22 抽象学习k8s
+服务编排 容器部署化 聊聊k8s的结构 负载均衡 结构 架构体系
+复杂。  难以去学习。
+一个master node。多个worker node。  
+部署工作节点。kubelet。
+masternode里面有api server。
+kubectl 指令参数和指令信息。 
+scheduler. controller-manager  
+etcd 分布式管理中心协调器。 etcd做整个集群状态的存储和维护。 
+控制节点。  
+无论是controll manager还是scheduler 下达指令给worker node。  
+kubelet就是通信渠道。
+pod和docker不是一对一。
+
 
 
 

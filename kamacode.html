@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图论专题</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .main-title {
+            color: #007BFF;
+            font-size: 2em;
+            text-align: center;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            border-left: 3px solid #007BFF;
+            padding: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .link-to-other {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1em;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="link-to-other-page">
+            <a href="index.html">首页/返回</a>
+        </div>
+        <h1 class="main-title">MapReduce</h1>
+        <p></p>
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <div class="toc-item"><a href="#section1">卡码网acm模式练习</a></div>
+            <div class="toc-item"><a href="#section2"></a></div>
+            <div class="toc-item"><a href="#section3"></a></div>
+            <div class="toc-item"><a href="#section4"></a></div>
+            <div class="toc-item"><a href="#section5"></a></div>
+            
+        </div>
+
+        
+        <h2></h2>
+        <pre class="code-block">
+
+        
+            
+        </pre>
+        <div class="section" id="section1"></div>
+        <p style="white-space: pre-line;">
+            1. shutdown 进入shutdown的状态。 表示线程池正在关闭状态。
+            线程池不会接受新任务，继续把队列中的任务处理完。 
+
+            2 stop 
+            线程池不会接受新任务了。 
+            不会处理队列中的任务。 
+            tidying。没有线程在运行。tidying。并且调用terminated。
+            该方法是空方法。留给程序员进行扩展。
+            五个状态。stop 停止。 不会新任务 也不会处理。 
+            synchronized和reentrantlock不同点。 
+            java关键字。reentrantlock 提供的类。 需要手动加锁和释放锁。 
+            jvm层面的锁。 api层面的锁。
+            synchronized 自动加锁和释放锁。 
+        
+            3  Threadlocal应用场景。线程本地存储
+            缓存在线程内部。任意时刻 任意方法中获取缓存的数据。 
+
+
+            
+
+            4 八股死记硬背
+
+           内存被占用了。
+           线程不共享同一个连接。内存泄漏。用完了threadLocal。调用一下remove方法。
+           面试题回答的时候要去回答的。
+
+           5 公平锁。非公平锁。
+           底层实现。aqs来进行排队。
+           lock方法加锁。是否存在线程在排队。
+
+
+           6 countDownLatch 一个或者多个线程 等待所有线程完成倒计时。
+           线程同步协作。
+           await用来等待计数归零。
+           countDown用来让计数减一。
+           es数据批量导入。
+           批量导入。查询总条数。计算总页数。db。固定每页两千条。
+           分页查询文章数据。查询当前页的文章。 
+           es的环境。四个属性。publish 
+           es（全文检索 引擎。分布式全文检索引擎。简单的restful api来隐藏lucene的复杂性。
+           服务器搭建集群。pb级别的搜索。elasticsearch搜索20tb的数据。
+           soundcloud用这个 为1.8亿用户提供即时而精准的音乐搜索服务。
+           百度 文本数据分析。 200个es节点。每天导入30+tb的数据。  
+           新浪 处理32亿条 实时日志。
+           阿里 es构建挖财自己的日志采集和分析体系。
+
+
+           synchronized锁升级过程是怎么样的
+           偏向锁。
+           偏向锁。支持锁重入。
+           轻量级锁。被获取到了。另外一个来竞争，升级为轻量级锁。没有调用api。而是通过自旋。不会阻塞线程。
+           重量级锁 自旋过多仍然没有获取到。升级为重量级锁。导致线程阻塞。
+           阻塞和唤醒都要操作系统层面去进行。
+           比较消耗时间。
+
+           对守护线程的理解 用户线程就是普通线程。
+           守护线程就是离线后自动关闭。
+           垃圾回收。parallelism 两个任务同时执行。
+           concurrency。两个任务同时执行。底层，任务被拆分成很多份，一个一个执行，站在更高角度看两个任务是同时执行的。
+
+           7  java死锁如何避免。
+
+           8 aqs的理解
+           java线程同步的框架 信号量state和线程组成的双向链表队列。
+           控制线程排队或者放行。
+           state表示加锁的次数。
+           0标识无锁。每加一次锁 state就加1 。  
+           ioc的理解。
+
+
+           9 订单网站里 
+           电商 订单信息 商品系统。  
+           物流信息。订单信息 花费500ms
+           商品信息800ms。
+           物流信息500ms。
+           不同微服务，如何完成这个业务。
+           共消耗1800s。
+           提交到线程池中执行。
+           并行执行的。
+           左边串行执行的 互相等待。
+           右边并行执行的。
+           商品接口完成就行。
+           各自500ms。多线程的future特性 获得接口数据。
+
+
+           搜索对应的场景代码 结合自己的知识点 
+           形成一个一小时可复习的模块 作为好的故事进行讲解。
+
+
+           10 实用场景里，我做过一个es数据导入的任务。
+           项目上线前，我要把数据库的数据一次性同步到es索引库里，但是当时的数据好像是1000万左右。一次性读取数据肯定不行（oom异常）
+           当时我想到可以用线程池，利用countdownlatch来控制，避免一次性加载过多，防止内存溢出。
+
+
+           11 客户端 发送http数据包
+           根据http协议组装数据包 
+           应用层  
+           传输层 增加tcp头部。 包含端口号 序列号。 
+           网络互联层。增加ip头部。 包含源ip地址。
+           网络访问层  增加以太网头部。 
+           物理层。  
+           分层好处 各层独立。  
+           灵活性更好。
+           易于测试和维护。  
+           能促进标准化。  
+
+           application layer  
+           transport layer  
+           internet layer  
+           network interface layer  
+           physical layer 
+
+
+           12 为什么需要网络 自动化部署 。  
+           企业的需求不一样。管理着很多网络设备。
+           路由器 交换机 防火墙 负载均衡器。 复杂的业务应用。
+
+           交换机： 多台电脑。 
+           router。  三台电脑联网打游戏。
+           无线 也要交换机。 无线ap。接收手机的无线信号。 
+           防火墙。   
+
+
+           企业交换机。网络工程师。  政府部门 企业部门。  
+           一台几十万 更加复杂丰富的功能。网络 安全稳定可靠。 
+           交换机连终端。
+           路由器连网络。 
+           地址转换 连接不同网络 转换地址。 
+           防火墙 个人防火墙。保护一台电脑。防止不安全的数据包被传输。
+
+           负载均衡器。 节点设备 压力平均的水平线上。
+           监控节点。 心跳包。正常把数据返回。
+           故障发现与故障转移。
+           硬件负载均衡器 软件负载均衡器。  
+           f5公司的负载均衡器。 内置操作系统和软件 硬件封装。
+           绝大多数的企业要求。  
+           小盒子。f5 最便宜的十几万 几十万上百万的都有。
+           软件负载均衡器 中小公司。成本低。
+           java主流。  
+           四层代理。  
+           七层代理。  
+
+           Network就说自己熟悉tcp和udp 区别在于udp主要是语音视频 tcp主要是无损传输。
+           python 
+           bash脚本 
+           docker部署。 github actions。 workflow。 cicd。  
+           linux操作也很熟悉 
+
+           客户端 连接 
+           输入流读取数据
+
+
+           13 共享内存
+           线程间共享内存。消息传递的同步是隐式执行的，消息的发送一定在消息的接受之前。
+           java采用共享内存模型。隐式通信。显示同步。
+           有一个主内存。每个线程有自己的工作内存。
+           内存比cpu慢很多，所以要多级缓存，避免等待内存。 
+
+
+           14 http明文
+           易受攻击无法保证数据完整性。 
+           https使用ssl加密传输协议。 
+           
+           15 缓存击穿
+           设置了过期时间 给某个key key过期的时候 恰好这时间点对这个key又大量的并发请求过来。
+           这些并发的请求可能会瞬间把db压垮。
+           添加互斥锁。
+           逻辑过期。
+
+
+           16 线程状态 状态之间如何变化
+           尚未启动 可运行 等待 阻塞 终止
+           new runnable waiting blocked terminated
+           创建线程对象。
+           有执行资格。没有执行权。
+
+           17countdownlatch用来让计数器减一
+           当时数据大概是两百万 一次性读取肯定内存溢出
+           数据库数据一次导入同步到es索引库中。
+           线程池方式导入。countdownlatch控制 避免一次导入过多。每页2000条。
+           查询总条数。
+           批量导入。
+           分页查询文章数据。  
+           查询当前页的文章。  
+           文章任务批量导入es。
+           提交到线程池执行。 
+
+           核心线程数
+           500ms
+           阻塞队列。
+           importAll
+
+           18 代理模式 数据恢复到原先的状态
+           角色。发起人。记录当前时刻内部状态。访问备忘录所有信息。
+           备忘录角色。存储发起人内部状态。 给到发起人
+           管理者 对备忘录进行管理 保存和获取。不能修改。
+           备忘录。 存储发起人的内部状态。  
+           发起人。 创建 memento。
+           重置备忘录。  
+           管理者字段。  访问备忘录本身 不能修改。 
+           优点 恢复状态的机制 实现内部状态的封装。  
+           简化。所有状态信息保存在备忘录里面。
+           资源消耗大。保存频繁 内存资源占用大。
+
+           19 单例模式
+           自行创建 实例模式。
+           任务管理器。
+           避免打开多个任务管理器 内存资源的浪费。 
+           只有一个实例对象。 
+           懒汉式单例。
+           instance 线程中同步。  
+           全局对外的访问点。
+           lazysingleton。 
+           懒汉式的单例。  
+           类加载没有生成单例。  
+           创建单例。
+           避免类在外部被实例化
+           public static synchronized LazySingleton getInstance() {
+
+           }
+
+           hungrySingleton 调用的时候已经存在了。类创建了 静态对象就已经有了。
+           直接使用 线程安全的。     
+           保证内存当中只有一个实例。
+           避免重复创建 减少内存开销。  
+
+           应用场景：保证在一个jvm里面只有一个单一的实例。
+           频繁创建一些类 降低内存 需求 只生成一次 更省内存。类的实例化创建时间比较长，但是又不怎么变。
+
+           20 代理模式 
+           真实主题的功能 
+           request方法。  
+           访问真实主题方法。
+           访问代理。  
+           做了一层封装 调用真实主题里的request。完整的代码。  
+           代码增强。  代理初期 两种模式 静态代理 动态代理。
+           程序语言代理类 程序运行前 class已经存在了 反射技术 运行的时候创建。
+
+           21  装饰模式
+           现有产品加功能 优化外观。
+           开发过程里 线程组件 核心功能。  
+           动态地扩展功能。  
+
+
+           22 责任链模式
+           事件经过多个对象去处理。
+           批假的。  单一职责原则。
+           请求没有明确的接收者。
+
+
+           23 jvm  
+           大牛必须掌握jvm。 
+           深入理解Java。知道java机制，排查问题的能力。
+           内存泄漏 cpu飙高。
+
+
+           24 python 常错
+           string = "app l e"
+print(string.split(" "))
+#字符串里是一定要有加东西才能用split的
+#不加的话 想弄成apple分别5个字符 只能够直接list(string)
+
+           
+
+           
+
+
+           
+            
+
+
+
+            

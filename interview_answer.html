@@ -357,12 +357,55 @@ kafka为了高可用 容错
 
 
 
-26 消息不丢失
+26 消息不丢失 均摊消费的缺点
 告诉服务器端 消费成功
 传统队列均摊消费。
 生产者10条消息 队列当中。
 取1-5 
 能者多劳
+消费者能力强弱
+消费者1和2
+默认消费1条或者2条
+
+事务消息。
+txSelect.
+
+commit
+rollback
+txCommit
+channel.txCommit()
+channel.txRollback()
+报错了就会回滚。
+
+
+27 ack自动与手动ack 应答
+自动：高吞吐量（快速处理）
+可靠性。
+怎么提高消息消费成功率
+手动应答。
+降低吞吐量。
+投递到服务器端有没有成功。
+confirm。
+
+28 事务消息
+确保 数据一致性和系统稳定性
+atomicity
+consistency
+isolation
+durability
+
+
+29 rabbitmq交换机类型
+exchange
+direct exchange
+fanout exchange
+topic exchange
+headers exchange
+不同的团队
+生产者投递给不同的队列 不同的队列给不同的消费者。
+交换机 需要一个入口。
+
+
 
            
 

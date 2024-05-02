@@ -323,6 +323,40 @@ print(string.split(" "))
 #字符串里是一定要有加东西才能用split的
 #不加的话 想弄成apple分别5个字符 只能够直接list(string)
 
+
+25 kafka fault tolerance high availability
+in-sync replicas 
+synchronous replication
+asynchronous replication
+followers
+
+channel.confirmSelect确保就是 消息被确认投递成功了
+
+你的生产者 发消息出去对吧
+消息队列中间件有一个服务器 对吧 储存你的消息
+kafka为了高可用 容错
+有很多副本（replica）
+但是这里的副本 分为两类
+正常的话 我们正常理解 就是有一种是同步的副本
+和主服务器所有数据都是一致的
+但是这意味着什么呢 就是你每次数据有变更 主服务器都得等待副本备份完 才能继续下一步操作（就是说 主服务器是阻塞的 只要副本同步不完成）
+这个优点就是数据一致性能保证 但是呢 副本给主服务器增添了一定负担 因为只要没同步完成 就会阻塞
+这些副本叫isr in-sync replica
+另外有一些异步同步的replica副本
+异步就是它会自己执行 跟你主服务器不相干的 不会阻塞你主服务器的操作
+主服务器一般我们叫做leader
+这种follower缺点很明显 就是你的leader最新的数据变更 它不一定有 所以保证不了数据一致性
+但是优点也有很多 一个点就是
+比如isr全部崩溃的时候
+这种异步备份的follower就可以拿来用 确保一个高可用
+还有的就比如提高了系统的扩展性 比如全球多个地区的服务器 不用一直互相同步 那样有很大的延迟 
+它就像是一个 怎么说呢 离线的服务
+因为不和leader随时同步的
+如果你网络很差或者延迟很大的时候 你的leader和isr之间同步备份是很花时间的
+但是因为异步同步的follower是一个异步的原理 所以一直可以用
+
+
+
            
 
            

@@ -578,6 +578,22 @@ ChatGPT
 
 39 优化1 把size大的字段拆分到另一个低频查询的表里面
 
+restful api
+
+@RestController
+@RequestMapping
+public ResponseEntity function(@RequeustBody param) {
+    List<> articleList = apArticleMapper.load();
+    return ResponseEntity.okResult(articleList);
+}
+
+
+分页条数的校验
+校验参数 
+频道参数校验
+时间校验
+
+
 
 
 

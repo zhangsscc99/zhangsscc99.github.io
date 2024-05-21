@@ -141,22 +141,9 @@
         直到右边括号 进行正经计算，直接找一个好的test case对着test case写就会容易很多。<p>
 
             <div class="section" id="section4"></div>
-            <h2>206 反转链表</h2>
+            <h2>225 用队列实现栈</h2>
             <pre class="code-block">
-                class Solution {
-                    public ListNode reverseList(ListNode head) {
-                        if (head == null || head.next == null) {
-                            return head;
-                        }
-                
-                        ListNode last = reverseList(head.next);
-                        head.next.next = head;
-                        head.next = null;
-                
-                        return last;
-                
-                    }
-                }
+                整体思路就是 把头节点都push到尾部
             </pre>
             <p>这道题关键点在于用递归。
             <p>

@@ -952,6 +952,18 @@ key必须保证唯一。 缓存同一个key时，后者会覆盖前者。
 分数变动  
 sorted set类型 
 
+{
+    "rewrites": [
+         {
+              "source": "/src/:path", "destination": "/src/:path"
+         },
+         { "source": "/(.*)", "destination": "/index.html" }
+    ]
+}
+
+
+
+
 
 
 

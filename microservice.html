@@ -1009,6 +1009,27 @@ ChatGPT
 是不是有个统一的可执行文件
 ChatGPT
 是的，通常情况下，一个项目会编译成一个单独的可执行文件。这个可执行文件包含了所有被添加到项目目标中的源文件编译后的代码，以及它们之间的链接关系。如果某个源文件中包含了main函数并且被添加到目标中，那么最终的可执行文件就会包含这个main函数，并且在运行时会执行它。如果某个源文件中包含了main函数但没有被添加到目标中，那么最终的可执行文件就不会包含这个main函数，也就不会执行它。
+sort buffer完成排序操作 
+不是通过索引直接返回排序结果的排序都叫filesort 
+usingindex性能要高 优化orderby语句 
+
+
+73
+推动自己去干活。
+是不是一个pr还没merge 另一个commit是不用创建新的pr的 
+ChatGPT
+是的，在一个 PR (Pull Request) 中，可以有多个 commit。你不需要为每个新的 commit 创建一个新的 PR。只要你将新的 commit 推送到同一个分支（在这个例子中是 Yuting-branch），它们就会自动添加到已经存在的 PR 中。
+
+当前的 PR 显示你有两个 commit：
+
+components footer social
+update package.json from main branch
+只要你继续在 Yuting-branch 上工作并推送新的 commit，它们都会被包含在这个 PR 中，直到这个 PR 被合并或关闭。这样做可以保持你的代码变更在一个 PR 中，方便代码审查和管理。
+
+
+
+
+
 
 
 

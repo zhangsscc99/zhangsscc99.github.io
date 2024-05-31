@@ -1116,6 +1116,19 @@ websocket相比其它：实时通信
 高效资源利用  减少重复请求和响应开销
 
 
+维护和处理连接状态
+数据重传机制
+三次握手 确保连接是双工的
+fin包 
+客户端 发送sync同步包 服务端syn加ack表示可以连接
+ack sync
+
+fin=1, ack=1, close-wait可以关闭 确认关闭。  
+protobuf就是序列化框架
+
+79 protobuf就是序列化框架
+request和response
+
 
 
 

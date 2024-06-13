@@ -1204,7 +1204,13 @@ https://www.bilibili.com/video/BV14Y4y1C7B1/?spm_id_from=333.337.search-card.all
 通过这些步骤，你可以使用Playwright访问和操作DOM中的元素，实现自动化测试和动态内容更新。DOM是Web开发中非常重要的概念，了解DOM的结构和操作方法可以帮助你更好地进行Web开发和自动化测试。
 
 
+87
+Implicit Waits and Smart Handling
+Playwright inherently waits for certain conditions to be met before proceeding with actions like clicks. Specifically:
 
+Element Availability: Playwright will wait for the target element to be available in the DOM before attempting to click it.
+Element Interactability: Playwright waits for the element to be interactable (e.g., not obscured or disabled).
+These built-in checks help ensure that interactions like clicks are successful without the need for additional explicit waits in many cases.
 
 
 

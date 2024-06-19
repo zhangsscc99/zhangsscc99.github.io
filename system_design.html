@@ -189,7 +189,13 @@ nosql不支持multi-index
 hbase  
 cassandra 三层结构
 row key 
-column key  
+column key 
+
+row key 决定数据存储在哪里 多台机器存储  
+每台存一份很浪费
+sharding的算法 partition的算法
+每次存储查询都要带上row key  不支持range query范围查询  
+发的贴子 user id
 
 
 

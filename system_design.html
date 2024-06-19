@@ -204,7 +204,12 @@ timestamp加上userid
 
 8friendship table适合什么数据库
 sql和nosql的选择标准
-
+大部分情况 sql和nosql都可以使用 存哪里都是存 
+支持transaction都不能选nosql
+一个网站可以使用多种数据库
+查询复杂放sql 简单就放nosql 
+各取所长 配合在一起去使用 user table  sql 信任度multi-index  
+friendship 数据结构简单 nosql  
 
 
 

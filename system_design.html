@@ -52,6 +52,21 @@ memoization
 
 多进程是不行的 变量级别锁是不行的
 
+zookeeper  
+
+db到set cache到delete 业界最佳
+cache里放旧数据
+读多写少 很多要读 可能就load回来了
+
+
+读多写少 先set一下user 再cache delete。
+hit rate。cache hit rate 98%以上
+
+
+脚本定时任务同步 是不现实的
+cache ttl机制 timeout 缓解一致性问题
+cache time to live 不是特别完美 但是最省力省时间。解决cache和db数据不一致。
+
 
 
 大概10分钟一节

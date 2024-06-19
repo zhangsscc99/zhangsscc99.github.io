@@ -68,6 +68,19 @@ cache ttl机制 timeout 缓解一致性问题
 cache time to live 不是特别完美 但是最省力省时间。解决cache和db数据不一致。
 为什么不是cache set 因为这样经常数据不一致
 
+5 写多读少
+没法使用cache优化
+cache aside架构
+db->web server -> cache
+memcached + mySql
+
+
+cache through 用的少 
+服务器只和cache沟通
+cache负责db沟通把数据持久化
+redis包含了cache和db 可以理解为
+cache aside的方式较多。
+
 
 大概10分钟一节
 10+10+17

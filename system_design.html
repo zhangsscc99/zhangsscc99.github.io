@@ -14,3 +14,10 @@ cassandra, mongodb, 10k qps
 十万到百万
 
 2-3万高并发 redis单机
+
+
+3 300k的查询请求 读请求
+可以用cache进行优化 读多写少 用cache
+memcached不支持数据持久化
+file system支持更慢的数据 很远的地方 先存在local。
+计算量很大的工作的cache 算十分钟 算一次

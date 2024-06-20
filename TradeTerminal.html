@@ -126,6 +126,28 @@ dockerfile maven plugin插件 微服务创建为镜像。
 clean install 
 
 
+16
+page.evaluate主要是提取代码 page.on才是事件监听 是吗
+
+ChatGPT
+Yes, you are correct. page.evaluate and page.on serve different purposes in Playwright.
+
+page.evaluate
+Purpose: Primarily used to execute JavaScript code within the context of the web page.
+Use Case: Useful for extracting data, interacting with the DOM, and performing operations that require running code directly in the browser environment.
+Example:
+javascript
+Copy code
+const pageTitle = await page.evaluate(() => {
+    return document.title;
+});
+console.log(pageTitle); // Logs the page title
+
+page.on
+Purpose: Used for event listening. It allows you to listen for and react to various events emitted by the page.
+Use Case: Useful for monitoring and reacting to network requests, responses, console messages, dialogs, and other events.
+
+
 
 总结
 在 Tailwind CSS 中，你需要在 className 中手动写类名的原因是：

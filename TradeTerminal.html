@@ -148,6 +148,20 @@ Purpose: Used for event listening. It allows you to listen for and react to vari
 Use Case: Useful for monitoring and reacting to network requests, responses, console messages, dialogs, and other events.
 
 
+17 单元测试 集成测试 
+你提供的代码片段更倾向于集成测试，而不是单元测试。以下是对这两种测试类型的简要解释：
+
+单元测试（Unit Testing）：
+
+定义：单元测试是指对软件中的最小可测试单元进行验证，以确保它们的行为与预期一致。通常，这些测试是针对单个函数或方法的。
+目标：验证单个组件或模块的功能是否正确，通常是隔离的，不依赖于外部系统或组件。
+工具：常用的单元测试框架包括Jest、Mocha、JUnit等。
+集成测试（Integration Testing）：
+
+定义：集成测试是指将多个模块或系统组件组合在一起进行测试，以验证它们在一起工作时的正确性。
+目标：确保各个模块在集成后能够协同工作，并正确地进行数据交换和交互。
+工具：常用的集成测试工具和框架包括Playwright、Selenium、Cypress等。
+
 
 总结
 在 Tailwind CSS 中，你需要在 className 中手动写类名的原因是：

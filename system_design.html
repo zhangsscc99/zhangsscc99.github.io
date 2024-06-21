@@ -306,6 +306,18 @@ peak read qps = 1k * 2 = 2k
 1台ssd支持的mysql完全可以搞定。
 
 
+service服务
+小application
+函数设计urlservice.encode(long_url)
+urlservice.decode(short_url)
+
+get /<short_url>
+    return a http redirect response  
+post /data/shorten/
+data = {url: http://xxxx}  
+return short url 
+
+
 
 
 

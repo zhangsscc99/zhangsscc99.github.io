@@ -288,6 +288,22 @@ short url不需要释放
 没分配出去的总会有人用的。磁盘映射关系不长，存着。十年后一看，网站变了。
 一个long url可以对应多个short url
 
+分析qps  
+一个亿日活用户。
+新浪微博。
+100M。
+假设 产生一条tiny url qps  
+0.1. average write qps: 100M * 0.1/ 86400 -- 100
+peak write qps = 100 * 2 = 200 
+
+点击一条tiny url的qps  
+假设每个平均一次点击
+average read qps: 100M * 1/ 86400 - 1k  
+peak read qps = 1k * 2 = 2k
+100M * 0.1 = 10M 
+10M 条  100长度平均这样算. 1G. 
+1T 的硬盘用3年
+
 
 
 

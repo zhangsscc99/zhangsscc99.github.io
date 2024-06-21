@@ -235,6 +235,17 @@ structured data 返回的是json
 xml 界面是html  
 web api我们要返回数据  
 json用的比xml多 
+xml 格式化数据 安卓里用的多  
+
+如何设计翻页  pagination  
+哪种方法是正确的  
+/api/newsfeed/?page=1
+/api/newsfeed/?max_id=xxx 
+
+要用maxid 频繁更新的newsfeed 如果传统翻页 可能会翻到自己刚刚看过的东西
+找最顶上一页 倒序显示 有max_id, 找到所有id <= max_id的最顶上的一页的数据
+
+
 
 
 

@@ -385,6 +385,19 @@ memcached跨地区分布
 
 23 shared db  
 web server -> shared db <- web server
+vertical sharding 将多张数据表分别分配给多台机器
+tiny url不适用  
+horizontal sharding  将一张数据表分配给多台机器
+how to scale 
+什么时候需要多台数据库服务器
+cache资源不够  
+写操作越来越多 
+越来越多的请求无法通过cache满足
+
+storage 解决存不下的问题  
+忙不过的问题 qps角度  
+tiny url主要是什么问题  
+web server db0 db1 db2 db3
 
 
 

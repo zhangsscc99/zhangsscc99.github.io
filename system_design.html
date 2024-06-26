@@ -486,6 +486,14 @@ consistent hash ring
 hash function.
 consistent hashing  
 
+backup 异步更新 
+晚上更新一次  恢复到之前某个时间点
+不用作在线数据服务 不分摊读
+
+
+replica是实时的  
+数据丢失可以马上通过replica回复 用作在线数据服务 分摊读
+
 
 虚拟节点  
 实体机器的key加后缀  

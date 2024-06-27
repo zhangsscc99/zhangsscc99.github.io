@@ -17,7 +17,7 @@ def extract_a_words(pdf_path, output_txt_path):
         words = text.split()
         for word in words:
             # 通过正则表达式匹配以小写字母a开头的单词
-            if re.match(r'^a[a-z]*', word):
+            if re.match(r'^b[a-z]*', word):
                 a_words += word + "\n"
     
     # 将所有以a开头的单词保存到txt文件
@@ -38,7 +38,7 @@ def filter_deduplicate_and_clean_lines(input_txt_path, output_txt_path):
         clean_line = line.rstrip().rstrip(string.punctuation)
         
         # 检查是否以小写字母a开头并且没有重复
-        if clean_line.startswith('a') and clean_line not in seen:
+        if clean_line.startswith('b') and clean_line not in seen:
             filtered_lines.append(clean_line + "\n")
             seen.add(clean_line)
     
@@ -79,11 +79,11 @@ def filter_lines_in_alphabetical_order(input_txt_path, output_txt_path):
 # filter_a_lines('input.txt', 'output.txt')
 
 # 设置PDF文件路径和输出文本文件路径
-pdf_path = "C:\\Users\\zhang\\Desktop\\gre_words\\gre_list1.pdf"
-output_txt_path = "GRE_list1_words_3000.txt"
+pdf_path = "C:\\Users\\zhang\\Desktop\\gre_words\\gre_list2.pdf"
+output_txt_path = "GRE_list2_words_3000.txt"
 extract_a_words(pdf_path, output_txt_path)
-filter_deduplicate_and_clean_lines('GRE_list1_words_3000.txt', 'GRE_list1_words_3000.txt')
-filter_lines_in_alphabetical_order('GRE_list1_words_3000.txt', 'GRE_list1_words_3000.txt')
+filter_deduplicate_and_clean_lines('GRE_list2_words_3000.txt', 'GRE_list2_words_3000.txt')
+# filter_lines_in_alphabetical_order('GRE_list2_words_3000.txt', 'GRE_list2_words_3000.txt')
 
 # import fitz  # PyMuPDF
 

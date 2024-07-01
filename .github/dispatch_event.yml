@@ -3,7 +3,7 @@ name: Dispatch Event on Push
 on:
   push:
     branches:
-      - master  # 监听dev分支的推送事件
+      - master  # 监听master分支的推送事件
 
 jobs:
   dispatch_event:

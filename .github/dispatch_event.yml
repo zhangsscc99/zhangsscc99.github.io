@@ -1,0 +1,18 @@
+name: Simple Request on Push
+
+on:
+  push:
+    branches:
+      - master  # 监听dev分支的推送事件
+
+jobs:
+  send_request:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Send POST Request
+        run: |
+          curl -X POST \
+          -H "Content-Type: application/json" \
+          -d '{"message": "Hello, World!"}' \
+          https://httpbin.org/post

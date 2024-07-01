@@ -538,6 +538,134 @@ map形成key value结果之后
 
 
 
+28 design google drive 
+google drive是什么
+
+step1 understand the problem and establish design scope
+首先搞清楚
+1 file storage
+2 synchronization service  
+3 store docs, photos, videos, other files in the cloud 
+4 access files from your computer or mobile device
+5 share files with friends, family  
+
+需要问面试官的问题
+1最重要的功能
+upload and download files, files synchronization  
+notifications 
+2mobile app or web app 
+both 
+3supported file types 
+any 
+4encrypted or not 
+encrypted 
+5file size limit 
+10gb or smaller.
+6how many users
+10 million daily active users
+
+
+non-functional:
+1 reliability: data loss unacceptable 
+2 fast sync speed 
+3 bandwidth usage 
+4 scalability 
+5 high availability 
+
+50 million signed up users.
+10 million daily active users 
+
+10gb free space. 
+2 files per day. 500kb average file size.  
+1:1 read to write ratio  
+space allocated: 50 million * 10 gb = 500 pb
+100 0000gb = 1pb
+10 million * 2 uploads/ 24 hours/ 3600 seconds = 240
+
+peak qps: 480  
+high-level design and get buy-in  
+
+step2 high-level design
+build everything in a single server 
+scale it up to support millions of users. 
+a web server to upload and download files
+a database 
+a storage system to store files. 1TB to store files.
+
+apache web server. 
+a mysql db. 
+
+drive directory: user1, user2, user3  
+path. 
+uniquely identified by joining the namespace and the relative path 
+
+
+APIs  
+upload 
+download 
+file revisions
+
+resumable upload: size large, high chance of network interruption 
+api/files/upload?uploadType=resumable
+
+api/files/upload?uploadType=resumable  
+params: upload type, data, 
+
+initial request to retrieve the resumable url  
+upload and monitor 
+upload disturbed: resume the upload  
+
+
+api/files/download  
+params: path, 
+{
+    "paths":"/recipes/soup/best_soup.txt"
+}
+
+get file revisions 
+
+params:path, limit (the maximum number of revisions to return)
+
+
+secure sockets layer protect data transfer between the client 
+and backend servers 
+
+sharding based on user id 
+
+stored on multiple storage servers 
+Amazon S3  
+
+
+add a load balancer to distribute network traffic 
+evenly ditributed traffic  
+redistribute the traffic 
+
+
+
+step 3 design deep dive  
+block servers  
+
+
+实时轮询 
+太麻烦 
+频繁打开关闭 占用资源
+产生大量无意义请求 实时性并不高
+
+长轮询
+有消息再响应
+请求响应次数很少
+缺点：客户端长时间收不到消息 断开连接 
+
+
+问题
+1meta data是什么
+2resumable upload是什么，三个步骤是什么
+为什么需要send the initial request to retrieve the resumable URL  
+3长轮询是什么
+4
+
+
+
 
 
 

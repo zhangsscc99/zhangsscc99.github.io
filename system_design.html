@@ -657,6 +657,33 @@ block servers
 缺点：客户端长时间收不到消息 断开连接 
 
 
+python split 
+split不加参数（python）是什么
+
+ChatGPT
+在 Python 中，split() 方法用于将字符串拆分为列表。默认情况下，它会以任何空白字符（包括空格、制表符、换行符等）作为分隔符来拆分字符串，并且会自动忽略连续的空白字符。split() 方法不带参数时的行为可以通过以下例子展示：
+
+python
+Copy code
+text = "Hello   world!\nThis is a\ttest."
+words = text.split()
+print(words)
+解释
+输出结果为：
+
+css
+Copy code
+['Hello', 'world!', 'This', 'is', 'a', 'test.']
+解释
+在这个例子中，字符串 text 被拆分成一个个单词，不管空白字符是空格、换行符还是制表符，都被当作分隔符，并且连续的空白字符被自动忽略。
+
+总结：
+
+默认情况下，split() 方法会使用空白字符作为分隔符。
+连续的空白字符会被自动忽略。
+返回的是一个包含拆分后的字符串部分的列表。
+
+
 问题
 1meta data是什么
 2resumable upload是什么，三个步骤是什么

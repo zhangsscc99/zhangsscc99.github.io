@@ -693,6 +693,39 @@ rpc 解决多个计算机之上应用的通信
 2屏蔽通信底层复杂度。本地服务一样完成远程服务调用。规范 没有具体的实现。dubbo具体实现。grpc。 
 自定义报文通信规范。自定义序列化方式。 openfeign。
 
+应用层 dns  http。
+传输 udp tcp
+网络层 
+
+
+http超文本传输协议 
+无状态的 以请求 应答方式 运行的协议。
+使用可扩展语义和自描述消息格式。
+与基于网络的超文本消息系统灵活的互动。  
+起始行。头部字段集合。kv形式更详细。  get head put post 表示对资源的操作。
+url标记请求方法要操作的资源。
+表示报文使用的http协议版本。  
+
+
+url  
+浏览器 
+浏览器解析域名 对应的ip地址是多少，通过dns服务器 dns请求获取ip
+访问过 ip缓存到浏览器里  解析ip地址。 命中缓存 无过期 返回ip地址。本机域名解析文件。 
+网络请求 
+tcp三次握手  
+发起http请求 http相应
+浏览器解析响应报文 渲染页面。 
+dom document object model.  
+dom数据结构  
+
+
+http天生明文 传输过程完全透明。 截获 修改 伪造请求 响应报文 
+响应报文被篡改 数据不具有可信性。为安全而生的https协议 支付转账场景http很不安全。
+secure sockets layer安全套接层  
+tls 传输层安全 transport layer security  
+
+
+
 
 
 
@@ -701,7 +734,7 @@ rpc 解决多个计算机之上应用的通信
 2resumable upload是什么，三个步骤是什么
 为什么需要send the initial request to retrieve the resumable URL  
 3长轮询是什么
-4
+
 
 
 

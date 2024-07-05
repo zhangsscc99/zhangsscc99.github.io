@@ -882,7 +882,16 @@ created 201 新建 修改成功
  422 unprocesable entity 当创建一个对象时 发生一个验证错误
  500 internal server error  
  服务器发生错误 用户 无法判断发出的请求是否成功。
- 
+
+29 accept 与content-type  
+accept 代表发送端（客户端）希會接受的数据类型
+content-type 代表发送端（客户端）发送的实体数据的数据类型
+
+accept：application/json  客户端希望接收 json  
+请求头设置了accept json 希望返回json格式的数据
+请求发起的时候才有  
+content-type: application/json  请求头设置了content-type json 发送的数据是json格式的数据
+
 
 
 

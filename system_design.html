@@ -827,6 +827,20 @@ ChatGPT
 
 符合restful规范 风格
 
+请求路径 
+请求方式
+请求参数 
+请求响应  模板路径 
+
+@Controller 
+public class EmplouyeeController {
+    @RequestMapping("/employee/list")
+    public String list(Model model) {
+        model.addAttribute("list", employeeService.list());
+        return "employee/list";
+    }
+}
+
 
 
 

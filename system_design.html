@@ -868,6 +868,22 @@ public class EmployeeController{
 建议规范 可以不遵守 以公司约定为主 高于restful  
 相应数据以公司规定来。 
 
+created 201 新建 修改成功
+200 ok
+ 202 accepted 请求进入后台排队  
+ 204 no content 数据删除成功
+ 400 invalid request  发出请求有错误 该操作是幂等的 
+ 401 unauthorized  
+ 403 forbidden  
+ 404 not found  
+ 406 not acceptable 
+ 比如请求json 但是只有xml格式
+ 410 gone 请求的资源被永久删除 且不会再得到的  
+ 422 unprocesable entity 当创建一个对象时 发生一个验证错误
+ 500 internal server error  
+ 服务器发生错误 用户 无法判断发出的请求是否成功。
+ 
+
 
 
 

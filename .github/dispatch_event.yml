@@ -16,3 +16,14 @@ jobs:
           -H "Content-Type: application/json" \
           -d '{"message": "Hello, World!"}' \
           https://httpbin.org/post
+
+
+
+          curl -X POST https://fafafa.io/verify_telegram \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Bearer api_token" \
+          -d '{
+                "telegram_id": "telegram_id",
+                "code": "verification_code"
+              }'
+

@@ -1059,6 +1059,10 @@ grpc目前还不支持全部编程语言。
 trpc只是一组库 基于这个进行开发
 trpc没有protocol buffers。
 
+ctx: 代表当前请求的上下文对象，包含请求的相关信息。你可以使用 ctx 访问数据库实例（ctx.prisma）、会话信息等。比如 ctx.prisma.server.create 和 ctx.prisma.server.update 用于与数据库交互。
+
+mutation: 定义了处理数据修改的操作。在你的示例中，create 和 update 都是 mutation 类型的处理程序。create 用于创建新记录，update 用于更新现有记录。
+
 
 
 

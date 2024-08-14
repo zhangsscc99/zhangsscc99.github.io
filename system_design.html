@@ -1063,6 +1063,25 @@ ctx: 代表当前请求的上下文对象，包含请求的相关信息。你可
 
 mutation: 定义了处理数据修改的操作。在你的示例中，create 和 update 都是 mutation 类型的处理程序。create 用于创建新记录，update 用于更新现有记录。
 
+import { createTRPCContext, createTRPCRouter, publicProcedure, protectedProcedure } from './trpc'; // 根据实际路径调整导入
+
+export const exampleRouter = createTRPCRouter({
+  getPublicData: publicProcedure.query(async ({ ctx }) => {
+    return ctx.prisma.publicData.findMany();
+  }),
+
+  getProtectedData: protectedProcedure.query(async ({ ctx }) => {
+    // 需要身份验证才能访问
+    return ctx.prisma.protectedData.findMany();
+  }),
+  
+  createData: protectedProcedure
+    .input(dataInputSchema)
+    .mutation(async ({ ctx, input }) => {
+      // 需要身份验证才能创建数据
+      return ctx.prisma.data.create({ data: input });
+    }),
+});
 
 
 

@@ -208,3 +208,8 @@ if __name__ == "__main__":
     filename14 = "0+Fashion+cnn+bias0.5+epoch3021+local10+lr0.2+batch32+nwork100+nbyz20+scale+mean+sgn+0.001+5+0.1.txt"
     output_pdf14 = filename14[:-4] + ".pdf"
     process_file_and_plot_2(filename14, output_pdf14)
+
+    # 这个结果很烂 先注释掉
+    # filename15 = '0+Fashion+cnn+bias0.5+epoch3042+local10+lr0.2+batch32+nwork100+nbyz20+scale+trim+sgn+0.002+7+0.15cifar10.txt'
+    # output_pdf15 = filename15[:-4] + ".pdf"
+    # process_file_and_plot_2(filename15, output_pdf15)

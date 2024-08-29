@@ -148,5 +148,18 @@ ajax技术。
 
 
 14 cache control 强缓存
+expires强缓存 内存中读取缓存并返回
+实现 HTTP 缓存通常涉及使用 HTTP 标头来控制缓存行为。这些标头可以指导浏览器或代理服务器在本地缓存资源或从服务器重新获取资源。以下是一些常用的 HTTP 缓存标头及其用法示例：
+
+1. Cache-Control
+Cache-Control 标头用于指定缓存机制。它可以在服务器响应中设置，以控制资源在客户端和中间代理服务器中的缓存方式。
+
+示例代码：
+
+http
+Copy code
+HTTP/1.1 200 OK
+Cache-Control: max-age=3600, must-revalidate
+
 
 

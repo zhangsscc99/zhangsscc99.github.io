@@ -9,6 +9,8 @@ def partition(arr, low: int, high: int):
     arr[low], arr[j] = arr[j], arr[low]
     return j 
     #71 38 52 92 
+    #71 92 38 52
+    #把小的都和大的换掉了 然后最后把pivot也换到所有小的之后
 
 
 def quick_sort_between(arr, low: int, high: int):

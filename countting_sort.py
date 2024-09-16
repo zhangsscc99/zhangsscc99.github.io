@@ -12,6 +12,21 @@ def partition(arr, low: int, high: int):
     #71 92 38 52
     #把小的都和大的换掉了 然后最后把pivot也换到所有小的之后
 
+def partition(arr, low, high):
+    pivot = arr[low]
+    i = low + 1
+    j = high
+
+    while i <= j:
+        while i <= high and arr[i] <= pivot:
+            i += 1
+        while j > low and arr[j] > pivot:
+            j -= 1
+        if i < j:
+            arr[i], arr[j] = arr[j], arr[i]
+    
+    arr[low], arr[j] = arr[j], arr[low]
+    return j
 
 def quick_sort_between(arr, low: int, high: int):
     if high-low <= 0: # 递归结束条件

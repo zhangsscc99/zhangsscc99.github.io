@@ -8,10 +8,17 @@ def partition(arr, low , high):
     arr[j], arr[low] = arr[low], arr[j]
     return j
 
+def randomized_partition(arr, low, high):
+    # 随机选择一个索引，交换到第一个元素
+    rand_index = random.randint(low, high)
+    arr[low], arr[rand_index] = arr[rand_index], arr[low]
+    return self.partition(arr, low, high)
+
+
 def quick_sort_between(arr, low, high):
     if high - low <= 0:
         return 
-    m = partition(arr, low, high)
+    m = randomized_partition(arr, low, high)
     quick_sort_between(arr, low, m - 1)
     quick_sort_between(arr, m + 1, high)
 

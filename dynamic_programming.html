@@ -44,14 +44,8 @@
     <p></p>
     <div class="toc">
         <h2>Table of Contents</h2>
-        <div class="toc-item"><a href="#section1">1137 第N个斐波那契数</a></div>
-        <div class="toc-item"><a href="#section2">746</a></div>
-        <div class="toc-item"><a href="#section3">198</a></div>
-        <div class="toc-item"><a href="#section4">121 买卖股票</a></div>
-        <div class="toc-item"><a href="#section5">2 两数相加</a></div>
-        <div class="toc-item"><a href="#section6">92 反转链表II</a></div>
-        <div class="toc-item"><a href="#section7">141 环形链表</a></div>
-        <div class="toc-item"><a href="#section8">142 环形链表II</a></div>
+        <div class="toc-item"><a href="#section1"></a></div>
+        
 
     </div>
 
@@ -118,20 +112,7 @@
     <div class="section" id="section4"></div>
     <h2>121 买卖股票</h2>
     <pre class="code-block">
-                class Solution {
-                    public ListNode reverseList(ListNode head) {
-                        if (head == null || head.next == null) {
-                            return head;
-                        }
-
-                        ListNode last = reverseList(head.next);
-                        head.next.next = head;
-                        head.next = null;
-
-                        return last;
-
-                    }
-                }
+               
             </pre>
     <p>三个状态。天数。允许交易最大次数。 当前持有状态。  0没有持有。1表示持有。 
     <p>

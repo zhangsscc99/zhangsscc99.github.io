@@ -46,7 +46,7 @@ def partition(arr, low, high):
     j = low 
     pivot = arr[low]
     for i in range(low + 1, high + 1):
-        if arr[i] <= pivot:
+        if arr[i] < pivot:
             j += 1
             arr[i], arr[j] = arr[j], arr[i]
     arr[j], arr[low] = arr[low], arr[j]
@@ -68,6 +68,11 @@ quick_sort(arr)
 print(arr)
 
 
+def randmized_partition(arr, low, high):
+    rand_index = random.randint(low, high)
+    arr[rand_index], arr[low] = arr[low], arr[rand_index]
+    return partition(arr, low, high)
+
 def partition(arr, low, high):
     pivot = arr[low]
     j = low 
@@ -81,7 +86,7 @@ def partition(arr, low, high):
 def quick_sort_between(arr, low, high):
     if high - low <= 0:
         return 
-    m = partition(arr, low, high)
+    m = randomized_partition(arr, low, high)
     quick_sort_between(arr, low, m - 1)
     quick_sort_between(arr, m + 1, high)
 
@@ -94,4 +99,5 @@ quick_sort(arr2)
 print(arr2)
 
 # 71 92 38 52
-# 
+# 71 38 92 52
+# 71 38 52 92

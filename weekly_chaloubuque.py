@@ -94,6 +94,15 @@ List<Result> - 1list of available datetime or 2confirm/throw exception
 '''
 
 '''
+公司tag刷题感想：
+1
+单调栈739 很不熟练呀
+503 做出来 但是有无更好的解法呢  
+
+50/100 
+
+
+2 每两题为一个测试
 
 '''
 
